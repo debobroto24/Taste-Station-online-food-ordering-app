@@ -12,6 +12,8 @@ class Count extends StatefulWidget {
   String productId;
   int productPrice;
   var productUnit;
+  String category; 
+  // String category; 
 
   Count({
     this.productName,
@@ -19,6 +21,7 @@ class Count extends StatefulWidget {
     this.productId,
     this.productImage,
     this.productPrice,
+    this.category, 
   });
   @override
   _CountState createState() => _CountState();
@@ -56,6 +59,7 @@ class _CountState extends State<Count> {
     getAddAndQuantity();
 
     ReviewCartProvider reviewCartProvider = Provider.of(context);
+    // print("check in count :category is : ${widget.category}"); 
     return Container(
       height: 25,
       width: 100,
@@ -85,6 +89,7 @@ class _CountState extends State<Count> {
                         cartName: widget.productName,
                         cartPrice: widget.productPrice,
                         cartQuantity: count,
+                        category: widget.category, 
                       );
                     }
                   },
@@ -113,6 +118,7 @@ class _CountState extends State<Count> {
                       cartName: widget.productName,
                       cartPrice: widget.productPrice,
                       cartQuantity: count,
+                       category: widget.category, 
                     );
                   },
                   child: Icon(
@@ -136,6 +142,7 @@ class _CountState extends State<Count> {
                     cartPrice: widget.productPrice,
                     cartQuantity: count,
                     cartUnit: widget.productUnit,
+                     category: widget.category, 
                   );
                 },
                 child: Text(

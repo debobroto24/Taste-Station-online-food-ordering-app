@@ -31,6 +31,8 @@ class ProductProvider with ChangeNotifier {
 
     value.docs.forEach(
       (element) {
+        // print("inside herbsproduct");
+        // print("category is ${element.get('category')}");
         productModels(element);
 
         newList.add(productModel);

@@ -1,4 +1,4 @@
-import 'dart:async';
+
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -95,6 +95,7 @@ class ProductOrderProvider with ChangeNotifier {
             dateTime: element.get("dateTime"),
             totalPrice: element.get("totalPrice"),
             totalproduct: element.get("totalProduct"),
+            category: element.get('category'), 
           );
           singleOrderList.add(data);
         }); // end of foreach
@@ -215,6 +216,7 @@ class ProductOrderProvider with ChangeNotifier {
           "cartPrice": element.get("cartPrice"),
           "cartQuantity": element.get("cartQuantity"),
           "cartUnit": element.get("cartUnit"),
+          "category": element.get("category"),
           "isAdd": true,
           "totalPrice": totalPrice,
           "totalProduct": totalProduct,
@@ -239,15 +241,35 @@ class ProductOrderProvider with ChangeNotifier {
 
   bool rateLoaded = false; 
   bool get getRateLoaded => rateLoaded; 
-  Future<void> setUserRating(String productId, double rate) async {
+  Future<void> setUserRating(String productId, double rate, String category) async {
     rateLoaded = false; 
-    print("im called");
     FirebaseFirestore.instance
         .collection('userrating')
         .doc(FirebaseAuth.instance.currentUser.uid)
         .collection('product')
         .doc(productId)
         .set({'rate': rate}).then((value) => print("worked"));
+
+    print('---------------'); 
+    print(rate);print(category);print("product  id  Xw5389Me5sU2r96DBSgS: ${productId}");
+
+    QuerySnapshot collection = await FirebaseFirestore.instance.collection(category).get();
+    // collection.docs.map((e)=>{
+    //   if(e.get('cartId') == productId){
+    //     print("this product id matched"),
+    //   }
+    // });
+    // DocumentSnapshot doc = await  collection.doc(productId).get();
+    // QuerySnapshot data = await FirebaseFirestore.instance.collection(category).where('productId', isEqualTo: productId).get();
+    // print(data.toString());
+    // print(data.data()); 
+    print('--------------'); 
+  
+
+
+    //  print("total rate ${docSnapshot['productName']}");
+    
+    // FirebaseFirestore.instance.collection(category)
     notifyListeners();
 
   }

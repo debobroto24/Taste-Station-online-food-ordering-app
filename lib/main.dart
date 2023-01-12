@@ -75,8 +75,6 @@ class MyApp extends StatelessWidget {
           builder: (context, snapShot) {
             if (snapShot.hasData) {
               return HomeScreen();
-
-              
             }
             // return CurrentOrder();
             return SignIn();

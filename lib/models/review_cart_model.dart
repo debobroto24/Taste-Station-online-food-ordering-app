@@ -7,6 +7,7 @@ class ReviewCartModel {
   int cartPrice;
   int cartQuantity;
   var cartUnit;
+  String category; 
   Timestamp dateTime;
   ReviewCartModel({
     this.cartId,
@@ -16,6 +17,7 @@ class ReviewCartModel {
     this.cartPrice,
     this.cartQuantity,
     this.dateTime,
+    this.category,
   });
 //  ReviewCartModel.toJson(List<ReviewCartModel> data){
 //     data.forEach((element) {

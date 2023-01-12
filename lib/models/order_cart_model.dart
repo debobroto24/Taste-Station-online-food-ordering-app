@@ -9,6 +9,7 @@ class OrderCartModel {
   int cartQuantity;
   int totalproduct; 
   double totalPrice; 
+  String category;
   var cartUnit;
   // double rate; 
  Timestamp dateTime;
@@ -22,6 +23,7 @@ class OrderCartModel {
     this.cartQuantity,
     this.totalPrice, 
     this.totalproduct,
+    this.category, 
     this.dateTime, 
     // this.rate,
   });

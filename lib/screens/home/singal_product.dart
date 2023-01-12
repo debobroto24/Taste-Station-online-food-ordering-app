@@ -14,6 +14,7 @@ class SingalProduct extends StatefulWidget {
   final ProductModel productUnit;
   final double rate; 
   final int totalRate; 
+  final String category; 
   // final List<dynamic> productUnit;
   SingalProduct(
       {this.productId,
@@ -21,7 +22,7 @@ class SingalProduct extends StatefulWidget {
       this.productName,
       this.productUnit,
       this.onTap,
-      this.productPrice,this.rate,this.totalRate});
+      this.productPrice,this.rate,this.totalRate, this.category});
 
   @override
   _SingalProductState createState() => _SingalProductState();
@@ -193,14 +194,14 @@ class _SingalProductState extends State<SingalProduct> {
                             // SizedBox(
                             //   width: 5,
                             // ),
-                            Count(
-                              productId: widget.productId,
-                              productImage: widget.productImage,
-                              productName: widget.productName,
-                              productPrice: widget.productPrice,
-                              productUnit:
-                                  unitData == null ? firstValue : unitData,
-                            ),
+                            // Count(
+                            //   productId: widget.productId,
+                            //   productImage: widget.productImage,
+                            //   productName: widget.productName,
+                            //   productPrice: widget.productPrice,
+                            //   productUnit:
+                            //       unitData == null ? firstValue : unitData,
+                            // ),
                           ],
                         ),
                       ],

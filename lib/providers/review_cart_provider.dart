@@ -13,6 +13,7 @@ class ReviewCartProvider with ChangeNotifier {
     int cartPrice,
     int cartQuantity,
     var cartUnit,
+    String category, 
   }) async {
     FirebaseFirestore.instance
         .collection("ReviewCart")
@@ -29,6 +30,7 @@ class ReviewCartProvider with ChangeNotifier {
         "cartUnit": cartUnit,
         "isAdd": true,
         "dateTime": DateTime.now(),
+        "category": category, 
       },
     );
   }
@@ -39,6 +41,7 @@ class ReviewCartProvider with ChangeNotifier {
     String cartImage,
     int cartPrice,
     int cartQuantity,
+    String category, 
   }) async {
     FirebaseFirestore.instance
         .collection("ReviewCart")
@@ -54,6 +57,7 @@ class ReviewCartProvider with ChangeNotifier {
         "cartQuantity": cartQuantity,
         "isAdd": true,
         "dateTime": DateTime.now(),
+        "category": category, 
       },
     );
   }

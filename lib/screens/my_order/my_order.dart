@@ -76,6 +76,7 @@ class _MyOrderState extends State<MyOrder> {
     //  Provider.of<ProductOrderProvider>(context).fetchOrderList();
     productOrderProvider.fetchOrderList();
     Map<String, List<OrderCartModel>> data = productOrderProvider.getOrderMap;
+    // print("length is : ${data.length}"); 
 
     return Scaffold(
       appBar: AppBar(
@@ -86,7 +87,7 @@ class _MyOrderState extends State<MyOrder> {
               onPressed: () {
                 Navigator.of(context).pushNamed('/home');
               },
-              icon: Icon(Icons.home_outlined)),
+              icon: Icon(Icons.home_outlined),),
         ],
       ),
       body: Container(

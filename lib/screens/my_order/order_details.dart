@@ -34,11 +34,10 @@ class OrderDetails extends StatelessWidget {
     // in set review cart product id and cart id is same
     ProductOrderProvider productOrderProvider;
     productOrderProvider = Provider.of<ProductOrderProvider>(context);
-     productOrderProvider.getUserRating(productIdList);
-     List<double> rateList = productOrderProvider.getRateList;
-     print('ratelist here'); 
+    //  productOrderProvider.getUserRating(productIdList);
+    //  List<double> rateList = productOrderProvider.getRateList;
     //  print(rateList.length);
-     rateList.forEach((e)=>print('rate is : ${e}')); 
+    //  rateList.forEach((e)=>print('rate is : ${e}')); 
     return Scaffold(
       appBar: AppBar(title: Text("order ")),
       body: Stack(
@@ -77,7 +76,9 @@ class OrderDetails extends StatelessWidget {
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(e.cartName??'name'),
+                                Container(
+                                  width:120, 
+                                  child: Text(e.cartName??'name',maxLines: 1,overflow: TextOverflow.ellipsis,)),
                                 SizedBox(height: 5),
                                 Text(e.cartPrice.toString()??'price')
                               ],
@@ -114,9 +115,12 @@ class OrderDetails extends StatelessWidget {
                                   color: Colors.amber,
                                 ),
                                 onRatingUpdate: (rating) {
-                                  print(rating);
-                                  productOrderProvider.setUserRating(
-                                      e.productId, rating);
+                                  // print(rating);
+                                  // productOrderProvider.setUserRating(e.cartId, rating,e.category);
+                                  print("----start------------"); 
+                                  print(e.category); 
+                                  print(e.productId); 
+                                  print("-----end-------"); 
                                 },
                                 // ),
                               ),

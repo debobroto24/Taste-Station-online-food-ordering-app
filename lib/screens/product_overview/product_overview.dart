@@ -21,6 +21,7 @@ class ProductOverview extends StatefulWidget {
   final String productDescription;
   final double rate;
   final int totalRate;
+  final String category; 
   ProductOverview(
       {this.productId,
       this.productImage,
@@ -28,7 +29,7 @@ class ProductOverview extends StatefulWidget {
       this.productPrice,
       this.productDescription,
       this.rate,
-      this.totalRate});
+      this.totalRate , this.category});
 
   @override
   _ProductOverviewState createState() => _ProductOverviewState();
@@ -99,6 +100,7 @@ class _ProductOverviewState extends State<ProductOverview> {
 
   @override
   Widget build(BuildContext context) {
+       print("check category in Product overview page: ${widget.category}"); 
     WishListProvider wishListProvider = Provider.of(context);
     getWishtListBool();
     return Scaffold(
@@ -240,6 +242,7 @@ class _ProductOverviewState extends State<ProductOverview> {
                           productName: widget.productName,
                           productPrice: widget.productPrice,
                           productUnit: '500 Gram',
+                          category: widget.category, 
                         ),
                         // Container(
                         //   padding: EdgeInsets.symmetric(

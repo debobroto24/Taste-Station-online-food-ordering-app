@@ -53,6 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
               (herbsProductData) {
                 return SingalProduct(
                   onTap: () {
+                    print("check category in home page: ${herbsProductData.category}"); 
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (context) => ProductOverview(
@@ -64,6 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               herbsProductData.productDescription,
                           rate: herbsProductData.rate,
                           totalRate: herbsProductData.totalRate,
+                           category: herbsProductData.category,
                         ),
                       ),
                     );
@@ -75,6 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   productUnit: herbsProductData,
                   rate: herbsProductData.rate,
                   totalRate: herbsProductData.totalRate,
+                  category: herbsProductData.category,
                 );
               },
             ).toList(),
@@ -131,6 +134,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           productPrice: freshProductData.productPrice,
                           rate: freshProductData.rate,
                           totalRate: freshProductData.totalRate,
+                           category: freshProductData.category,
                         ),
                       ),
                     );
@@ -142,6 +146,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   productUnit: freshProductData,
                   rate: freshProductData.rate,
                   totalRate: freshProductData.totalRate,
+                   category: freshProductData.category,
                 );
               },
             ).toList(),
@@ -195,6 +200,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           productPrice: rootProductData.productPrice,
                           rate: rootProductData.rate,
                           totalRate: rootProductData.totalRate,
+                          category: rootProductData.category,
                         ),
                       ),
                     );
@@ -206,6 +212,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   productUnit: rootProductData,
                   rate: rootProductData.rate,
                   totalRate: rootProductData.totalRate,
+                   category: rootProductData.category,
                 );
               },
             ).toList(),
