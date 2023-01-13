@@ -253,12 +253,24 @@ class ProductOrderProvider with ChangeNotifier {
     print('---------------'); 
     print(rate);print(category);print("product  id  Xw5389Me5sU2r96DBSgS: ${productId}");
 
-    QuerySnapshot collection = await FirebaseFirestore.instance.collection(category).get();
-    // collection.docs.map((e)=>{
-    //   if(e.get('cartId') == productId){
-    //     print("this product id matched"),
-    //   }
-    // });
+  DocumentSnapshot rateData = await FirebaseFirestore.instance.collection(category).doc(productId).get();
+  QuerySnapshot collection = await FirebaseFirestore.instance.collection(category).get();
+    // print(rateData['rate']); 
+    print(collection.docs.length); 
+    // collection.docs.
+   double rateNumber = 0; 
+   int totalRate = 0; 
+   collection.docs.forEach((e){
+    if(e.get('productId') == productId){
+      print("hello");
+      rateNumber = e.get('rate'); 
+      totalRate = e.get('totalRate');
+
+    }
+    // print(e.get('rate'));
+   });
+   print(rateNumber); 
+   print(totalRate);
     // DocumentSnapshot doc = await  collection.doc(productId).get();
     // QuerySnapshot data = await FirebaseFirestore.instance.collection(category).where('productId', isEqualTo: productId).get();
     // print(data.toString());

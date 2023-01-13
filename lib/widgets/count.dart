@@ -57,9 +57,9 @@ class _CountState extends State<Count> {
   @override
   Widget build(BuildContext context) {
     getAddAndQuantity();
+        //  print("check in count :category is : ${widget.category}"); 
 
     ReviewCartProvider reviewCartProvider = Provider.of(context);
-    // print("check in count :category is : ${widget.category}"); 
     return Container(
       height: 25,
       width: 100,

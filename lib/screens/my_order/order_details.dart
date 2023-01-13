@@ -116,11 +116,11 @@ class OrderDetails extends StatelessWidget {
                                 ),
                                 onRatingUpdate: (rating) {
                                   // print(rating);
-                                  // productOrderProvider.setUserRating(e.cartId, rating,e.category);
-                                  print("----start------------"); 
-                                  print(e.category); 
-                                  print(e.productId); 
-                                  print("-----end-------"); 
+                                  productOrderProvider.setUserRating(e.cartId, rating,e.category);
+                                  // print("----start------------"); 
+                                  // print(e.category); 
+                                  // print(e.cartId); 
+                                  // print("-----end-------"); 
                                 },
                                 // ),
                               ),
