@@ -63,11 +63,12 @@ class MyApp extends StatelessWidget {
           create: (context) => CheckoutProvider(),
         ),
         ChangeNotifierProvider<ProductOrderProvider>(
-            create: (context) => ProductOrderProvider())
+            create: (context) => ProductOrderProvider()), 
       ],
       child: MaterialApp(
         theme: ThemeData(
-            primaryColor: primaryColor,
+            // primaryColor: primaryColor,
+            primaryColor: Colors.white,
             scaffoldBackgroundColor: scaffoldBackgroundColor),
         debugShowCheckedModeBanner: false,
         home: StreamBuilder(

@@ -1,7 +1,7 @@
-
-
 import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:food_app/models/card_model.dart';
 import 'package:food_app/models/order_cart_model.dart';
 import 'package:food_app/providers/review_cart_provider.dart';
 import 'package:intl/intl.dart';
@@ -95,7 +95,7 @@ class ProductOrderProvider with ChangeNotifier {
             dateTime: element.get("dateTime"),
             totalPrice: element.get("totalPrice"),
             totalproduct: element.get("totalProduct"),
-            category: element.get('category'), 
+            category: element.get('category'),
           );
           singleOrderList.add(data);
         }); // end of foreach
@@ -239,74 +239,119 @@ class ProductOrderProvider with ChangeNotifier {
     isLoading = false;
   }
 
-  bool rateLoaded = false; 
-  bool get getRateLoaded => rateLoaded; 
-  Future<void> setUserRating(String productId, double rate, String category) async {
-    rateLoaded = false; 
-    FirebaseFirestore.instance
-        .collection('userrating')
-        .doc(FirebaseAuth.instance.currentUser.uid)
-        .collection('product')
-        .doc(productId)
-        .set({'rate': rate}).then((value) => print("worked"));
+  bool rateLoaded = false;
+  bool get getRateLoaded => rateLoaded;
+  bool isDone = false;
+  bool get getIsDone => isDone;
 
-    print('---------------'); 
-    print(rate);print(category);print("product  id  Xw5389Me5sU2r96DBSgS: ${productId}");
-
-  DocumentSnapshot rateData = await FirebaseFirestore.instance.collection(category).doc(productId).get();
-  QuerySnapshot collection = await FirebaseFirestore.instance.collection(category).get();
-    // print(rateData['rate']); 
-    print(collection.docs.length); 
-    // collection.docs.
-   double rateNumber = 0; 
-   int totalRate = 0; 
-   collection.docs.forEach((e){
-    if(e.get('productId') == productId){
-      print("hello");
-      rateNumber = e.get('rate'); 
-      totalRate = e.get('totalRate');
-
-    }
-    // print(e.get('rate'));
-   });
-   print(rateNumber); 
-   print(totalRate);
-    // DocumentSnapshot doc = await  collection.doc(productId).get();
-    // QuerySnapshot data = await FirebaseFirestore.instance.collection(category).where('productId', isEqualTo: productId).get();
-    // print(data.toString());
-    // print(data.data()); 
-    print('--------------'); 
-  
-
-
-    //  print("total rate ${docSnapshot['productName']}");
-    
-    // FirebaseFirestore.instance.collection(category)
+ Future<void>  addCardNumber(String cardNumber, String holderName, String expireDate,
+      String accountType) async {
+    try {
+      await FirebaseFirestore.instance
+          .collection('cardNumber')
+          .doc(FirebaseAuth.instance.currentUser.uid)
+          .collection("accounts")
+          .doc(cardNumber)
+          .set({
+        "holderName": holderName ,
+        "cardNumber": cardNumber ,
+        "expireDate": expireDate ,
+        "accountType": accountType ,
+      });
+    } catch (e) {}
     notifyListeners();
-
   }
-   List<double> rateList = [];
-    List<double> get getRateList => rateList;
-  Future<void> getUserRating(List<String> productId) async {
-     rateList = [];
-     double norate = 0; 
-    productId.forEach((element) async {
-      
 
-     DocumentSnapshot rate =   await FirebaseFirestore.instance
+  List<CardModel> cardList = [];
+  List<CardModel> get getCardList => cardList;
+  bool isCardLoaded = false; 
+  Future<void> getAllCard(cardtype) async {
+    cardList = []; 
+    try {
+      cardList = []; 
+      isCardLoaded = true; 
+      QuerySnapshot data = await FirebaseFirestore.instance
+          .collection("cardNumber")
+          .doc(FirebaseAuth.instance.currentUser.uid)
+          .collection("accounts")
+          .where("accountType", isEqualTo: cardtype)
+          .get();
+      data.docs.forEach((element) {
+        CardModel cd = CardModel(
+          accountType: element.get('accountType'),
+          cardNumber: element.get('cardNumber'),
+          expireDate: element.get('expireDate'),
+          holderName: element.get('holderName'),
+        );
+        cardList.add(cd);
+      });
+      // print(data.docs.length); 
+      // print("getallcard ${cardList.length}"); 
+      //  print(); 
+    } catch (e) {}
+    notifyListeners(); 
+  }
+
+  Future<void> setUserRating(String productId, double rate, String category) async {
+    rateLoaded = true;
+    try {
+      isDone = true;
+      FirebaseFirestore.instance
+          .collection('userrating')
+          .doc(FirebaseAuth.instance.currentUser.uid)
+          .collection('product')
+          .doc(productId)
+          .set({'rate': rate}).then((value) => print("worked"));
+      DocumentSnapshot rateData = await FirebaseFirestore.instance
+          .collection(category)
+          .doc(productId)
+          .get();
+      QuerySnapshot collection =
+          await FirebaseFirestore.instance.collection(category).get();
+      print(collection.docs.length);
+      double rateNumber = 0;
+      int totalRate = 0;
+      double updateRate;
+
+      collection.docs.forEach((e) {
+        if (e.get('productId') == productId) {
+          print("hello");
+          rateNumber = e.get('rate');
+          totalRate = e.get('totalRate');
+        }
+      });
+      updateRate = ((rate * totalRate) + rate) / (totalRate + 1);
+      FirebaseFirestore.instance.collection(category).doc(productId).update({
+        "rate": updateRate,
+        "totalRate": totalRate + 1,
+      });
+    } catch (e) {}
+
+    print('--------------');
+    rateLoaded = false;
+    notifyListeners();
+  }
+
+  List<double> rateList = [];
+  List<double> get getRateList => rateList;
+  Future<void> getUserRating(List<String> productId) async {
+    rateList = [];
+    double norate = 0;
+    productId.forEach((element) async {
+      DocumentSnapshot rate = await FirebaseFirestore.instance
           .collection('userrating')
           .doc(FirebaseAuth.instance.currentUser.uid)
           .collection('product')
           .doc(element)
           .get();
-        if(rate.exists){
-          rateList.add(rate['rate']); 
-        }  else{
-          rateList.add(norate);
-        }
+      if (rate.exists) {
+        rateList.add(rate['rate']);
+      } else {
+        rateList.add(norate);
+      }
     });
     print("ratelist in provider: ${rateList.length}");
     // notifyListeners();
-    return rateList; 
+    return rateList;
   }
 }

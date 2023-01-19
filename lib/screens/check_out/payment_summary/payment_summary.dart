@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/config/colors.dart';
+import 'package:food_app/models/card_model.dart';
 import 'package:food_app/models/delivery_address_model.dart';
 import 'package:food_app/models/product_model.dart';
 import 'package:food_app/models/review_cart_model.dart';
 import 'package:food_app/providers/product_order_provider.dart';
 import 'package:food_app/providers/review_cart_provider.dart';
+import 'package:food_app/route_helper/add_card_argument.dart';
 import 'package:food_app/screens/check_out/delivery_details/single_delivery_item.dart';
+import 'package:food_app/screens/check_out/payment_summary/all_cards.dart';
+// import 'package:food_app/screens/check_out/payment_summary/select_card.dart';
 import 'package:food_app/screens/check_out/payment_summary/my_google_pay.dart';
 import 'package:food_app/screens/check_out/payment_summary/order_item.dart';
 import 'package:food_app/screens/home/home_screen.dart';
 import 'package:food_app/screens/my_order/my_order.dart';
+import 'package:food_app/widgets/payment_box.dart';
 import 'package:provider/provider.dart';
 
 class PaymentSummary extends StatefulWidget {
@@ -23,6 +28,9 @@ class PaymentSummary extends StatefulWidget {
 enum AddressTypes {
   Home,
   OnlinePayment,
+  Visa,
+  Stripe,
+  Cashon,
 }
 
 class _PaymentSummaryState extends State<PaymentSummary> {
@@ -36,16 +44,15 @@ class _PaymentSummaryState extends State<PaymentSummary> {
     reviewCartProvider.getReviewCartData();
 
     orderProvider = Provider.of<ProductOrderProvider>(context);
+
     double discount = 30;
     double discountValue = 22;
     double shippingChanrge = 3.7;
     double total;
     // List<ReviewCartModel> ff =  reviewCartProvider.getReviewCartDataList;
     double totalPrice = reviewCartProvider.getTotalPrice();
-    // if (totalPrice > 300) {
-    //   discountValue = (totalPrice * discount) / 100;
-    //   total = totalPrice - discountValue;
-    // }
+
+    // List<CardModel>  cardList = orderProvider.getCardList;
 
     return Scaffold(
       appBar: AppBar(
@@ -67,41 +74,51 @@ class _PaymentSummaryState extends State<PaymentSummary> {
         trailing: Container(
           width: 160,
           child: MaterialButton(
-            onPressed: () {
-              // myType == AddressTypes.OnlinePayment
-              //     ? Navigator.of(context).push(
-              //         MaterialPageRoute(
-              //           builder: (context) => MyGooglePay(
-              //             total: total,
-              //           ),
-              //         ),
-              //       )
-              //     : Container();
-            },
-            child: GestureDetector(
-              onTap: () {
-                // Navigator.push(context,MaterialPageRoute(builder: (context){return HomeScreen();}));
-                // myType == AddressTypes.OnlinePayment
-                //     ? Navigator.of(context)
-                //         .push(MaterialPageRoute(builder: (context) {
-                //         MyOrder();
-                //       }))
-                //     // Container()
-                //     : Container();
-                if (myType == AddressTypes.OnlinePayment) {
-                  Navigator.of(context).pushNamed('/loadpayment');
+            onPressed: () async {
+              if (myType == AddressTypes.Visa) {
+                await orderProvider.getAllCard("visa");
+                List<CardModel> cardlist = await orderProvider.getCardList;
+                print("lengeth ${cardlist.length}");
+                if (cardlist.length > 0) {
+                  await Navigator.of(context).pushNamed(
+                    '/allcards',
+                    arguments: cardlist,
+                  );
                 } else {
-                  orderProvider.addOrder('home');
-                  Navigator.of(context).pushNamed('/home');
+                  print("no length");
                 }
-              },
-              child: Text(
-                "Place Order",
-                style: TextStyle(
-                  color: textColor,
-                ),
-              ),
-            ),
+                //  print("visa");
+              } else if (myType == AddressTypes.Stripe) {
+                await orderProvider.getAllCard("stripe");
+                List<CardModel> cardlist = await orderProvider.getCardList;
+                print("lengeth ${cardlist.length}");
+                if (cardlist.length > 0) {
+                  await Navigator.of(context).pushNamed(
+                    '/allcards',
+                    arguments: cardlist,
+                  );
+                } else {
+                  Navigator.of(context).pushNamed("/addcard",
+                      arguments: AddCardArgument(
+                          image: 'assets/stripe.png', accountType: "stripe"));
+
+                  print("no length");
+                }
+                //  print("visa");
+              } else {
+                Navigator.of(context).pushNamed("/addcard",
+                    arguments: AddCardArgument(
+                        image: 'assets/visa.png', accountType: "visa"));
+              }
+            },
+            child: orderProvider.isCardLoaded
+                ? CircularProgressIndicator()
+                : Text(
+                    "Place Order",
+                    style: TextStyle(
+                      color: textColor,
+                    ),
+                  ),
             color: primaryColor,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(30),
@@ -187,33 +204,38 @@ class _PaymentSummaryState extends State<PaymentSummary> {
                   leading: Text("Payment Options"),
                 ),
                 RadioListTile(
-                  value: AddressTypes.Home,
+                  value: AddressTypes.Visa,
                   groupValue: myType,
-                  title: Text("Home"),
+                  title: PaymentBox(
+                      paymentOption: "visa", image: "assets/visa.png"),
                   onChanged: (AddressTypes value) {
                     setState(() {
                       myType = value;
                     });
                   },
-                  secondary: Icon(
-                    Icons.work,
-                    color: primaryColor,
-                  ),
                 ),
                 RadioListTile(
-                  value: AddressTypes.OnlinePayment,
+                  value: AddressTypes.Stripe,
                   groupValue: myType,
-                  title: Text("OnlinePayment"),
+                  title: PaymentBox(
+                      paymentOption: "Stripe", image: "assets/stripe.png"),
                   onChanged: (AddressTypes value) {
                     setState(() {
                       myType = value;
                     });
                   },
-                  secondary: Icon(
-                    Icons.devices_other,
-                    color: primaryColor,
-                  ),
-                )
+                ),
+                RadioListTile(
+                  value: AddressTypes.Cashon,
+                  groupValue: myType,
+                  title: PaymentBox(
+                      paymentOption: "CashOn", image: "assets/cashon.png"),
+                  onChanged: (AddressTypes value) {
+                    setState(() {
+                      myType = value;
+                    });
+                  },
+                ),
               ],
             );
           },
