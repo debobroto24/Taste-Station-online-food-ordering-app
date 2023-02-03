@@ -216,32 +216,6 @@ class _SignInState extends State<SignIn> {
     userProvider = Provider.of<UserProvider>(context);
     return Scaffold(
       body: Container(
-<<<<<<< HEAD
-        height: double.infinity,
-        width: double.infinity,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-              fit: BoxFit.cover,
-              image: AssetImage('assets/online-food-app.jpg')),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'Testy Food',
-              style: TextStyle(fontSize: 50, color: Colors.white, shadows: [
-                BoxShadow(
-                  blurRadius: 5,
-                  color: Colors.green.shade900,
-                  offset: Offset(3, 3),
-                )
-              ]),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-=======
-        color: Colors.white,
         height: double.infinity,
         width: double.infinity,
         // decoration: BoxDecoration(
@@ -252,8 +226,17 @@ class _SignInState extends State<SignIn> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Container(
+              width: 200,
+              height: 200,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: AssetImage('assets/tastestationlogo.png')),
+              ),
+            ),
             // Text(
-            //   'Tasty Food',
+            //   'Testy Food',
             //   style: TextStyle(fontSize: 50, color: Colors.white, shadows: [
             //     BoxShadow(
             //       blurRadius: 5,
@@ -262,19 +245,9 @@ class _SignInState extends State<SignIn> {
             //     )
             //   ]),
             // ),
-            Container(
-              width: 200,
-              height: 200,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: AssetImage('assets/online-food-app.jpg')),
-              ),
+            SizedBox(
+              height: 20,
             ),
-            // SizedBox(
-            //   height: 20,
-            // ),
->>>>>>> d95f242 (drawyr, wishlist, profile pages frontend updated)
             // Container(
             //   margin: EdgeInsets.only(left: 10, right: 10),
             //   width: double.infinity * 0.5,
@@ -298,32 +271,14 @@ class _SignInState extends State<SignIn> {
             //   ),
             // ),
             Container(
-<<<<<<< HEAD
               height: 400,
-=======
-              height: 350,
->>>>>>> d95f242 (drawyr, wishlist, profile pages frontend updated)
               width: double.infinity,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-<<<<<<< HEAD
-                  Text('Sign in to contunue'),
-                  Column(
-                    children: [
-                      SignInButton(
-                        Buttons.Apple,
-                        text: "Sign in with Apple",
-                        onPressed: () {},
-                      ),
-                      SignInButton(
-                        Buttons.Google,
-                        text: "Sign in with Google",
-                        onPressed: () async {
-=======
                   Text(
                     'Sign in to contunue',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+                    style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),
                   ),
                   Column(
                     children: [
@@ -332,57 +287,8 @@ class _SignInState extends State<SignIn> {
                       //   text: "Sign in with Apple",
                       //   onPressed: () {},
                       // ),
-                      Container(
-                        width: 220,
-                        alignment: Alignment.center,
-                        padding: EdgeInsets.only(top: 8, bottom: 8),
-                        decoration: BoxDecoration(
-                          color: Colors.deepOrangeAccent,
-                          borderRadius: BorderRadius.circular(3),
-                        ),
-                        child: Text(
-                          "Sign in with Apple",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18,
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 10),
-                      GestureDetector(
-                        onTap: () async {
->>>>>>> d95f242 (drawyr, wishlist, profile pages frontend updated)
-                          await _googleSignUp().then(
-                            (value) => Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(
-                                builder: (context) => HomeScreen(),
-                              ),
-                            ),
-                          );
-                        },
-<<<<<<< HEAD
-                      ),
-=======
-                        child: Container(
-                          width: 220,
-                          padding: EdgeInsets.only(top: 8, bottom: 8),
-                          decoration: BoxDecoration(
-                            color: Colors.deepOrangeAccent,
-                            borderRadius: BorderRadius.circular(3),
-                          ),
-                          alignment: Alignment.center,
-                          child: Text(
-                            "Sign in with Google",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                            ),
-                          ),
-                        ),
-                      ),
                       // SignInButton(
                       //   Buttons.Google,
-                      //   elevation: 4,
                       //   text: "Sign in with Google",
                       //   onPressed: () async {
                       //     await _googleSignUp().then(
@@ -394,7 +300,61 @@ class _SignInState extends State<SignIn> {
                       //     );
                       //   },
                       // ),
->>>>>>> d95f242 (drawyr, wishlist, profile pages frontend updated)
+                      GestureDetector(
+                        onTap: () async {
+                          // await _googleSignUp().then(
+                          //   (value) => Navigator.of(context).pushReplacement(
+                          //     MaterialPageRoute(
+                          //       builder: (context) => HomeScreen(),
+                          //     ),
+                          //   ),
+                          // );
+                        },
+                        child: Container(
+                          width: 220,
+                          alignment: Alignment.center,
+                          padding: EdgeInsets.only(top: 8, bottom: 8),
+                          decoration: BoxDecoration(
+                            color: Colors.deepOrangeAccent,
+                            borderRadius: BorderRadius.circular(3),
+                          ),
+                          child: Text(
+                            "Sign in with Apple",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 15),
+                      GestureDetector( 
+                            onTap: () async {
+                          await _googleSignUp().then(
+                            (value) => Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                builder: (context) => HomeScreen(),
+                              ),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          width: 220,
+                          alignment: Alignment.center,
+                          padding: EdgeInsets.only(top: 8, bottom: 8),
+                          decoration: BoxDecoration(
+                            color: Colors.deepOrangeAccent,
+                            borderRadius: BorderRadius.circular(3),
+                          ),
+                          child: Text(
+                            "Sign in with Google",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                            ),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                   Column(

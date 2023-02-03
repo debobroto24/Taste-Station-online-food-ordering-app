@@ -8,15 +8,18 @@ class PaymentBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      // margin:EdgeInsets.only(top:10px)
       width: MediaQuery.of(context).size.width * 75,
       height: 40,
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
               offset: Offset(0, 0),
-              color: Colors.black26..withOpacity(.7),
+              color: Color.fromARGB(255, 255, 179, 156)..withOpacity(.3),
               spreadRadius: 2,
-              blurRadius: 9)
+              blurRadius: 5
+              
+              )
         ],
         color: Color.fromARGB(255, 228, 228, 228),
         borderRadius: BorderRadius.circular(10),
@@ -47,7 +50,7 @@ class PaymentBox extends StatelessWidget {
             style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 17,
-                color: Colors.black45),
+                color: Colors.black),
           ),
         ],
       ),

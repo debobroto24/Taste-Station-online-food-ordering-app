@@ -21,12 +21,14 @@ class _HomeScreenState extends State<HomeScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        SizedBox(height: 10),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 20),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('Fried Rice'),
+              
+              Text('Fried Rice',style: TextStyle(fontSize: 20)),
               GestureDetector(
                 onTap: () {
                   Navigator.of(context).push(
@@ -37,9 +39,18 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   );
                 },
-                child: Text(
-                  'View all',
-                  style: TextStyle(color: Colors.grey),
+                child: Container(
+                  margin:EdgeInsets.only(right:10), 
+                  padding:EdgeInsets.symmetric(vertical: 7,horizontal: 10),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10), 
+                    color:primaryColor, 
+
+                  ),
+                  child: Text(
+                    'View all',
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
               ),
             ],
@@ -47,7 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
-          physics: NeverScrollableScrollPhysics(),
+          // physics: NeverScrollableScrollPhysics(),
           child: Row(
             children: productProvider.getHerbsProductDataList.map(
               (herbsProductData) {
@@ -99,7 +110,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('Burger'),
+              Text('Burger',style: TextStyle(fontSize: 20)),
               GestureDetector(
                 onTap: () {
                   Navigator.of(context).push(
@@ -110,9 +121,18 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   );
                 },
-                child: Text(
-                  'View all',
-                  style: TextStyle(color: Colors.grey),
+                 child: Container(
+                  margin:EdgeInsets.only(right:10), 
+                  padding:EdgeInsets.symmetric(vertical: 7,horizontal: 10),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10), 
+                    color:primaryColor, 
+
+                  ),
+                  child: Text(
+                    'View all',
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
               ),
             ],
@@ -165,7 +185,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('Pizza'),
+              Text('Pizza',style: TextStyle(fontSize: 20)),
               GestureDetector(
                 onTap: () {
                   Navigator.of(context).push(
@@ -176,9 +196,18 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   );
                 },
-                child: Text(
-                  'View all',
-                  style: TextStyle(color: Colors.grey),
+                 child: Container(
+                  margin:EdgeInsets.only(right:10), 
+                  padding:EdgeInsets.symmetric(vertical: 7,horizontal: 10),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10), 
+                    color:primaryColor, 
+
+                  ),
+                  child: Text(
+                    'View all',
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
               ),
             ],
@@ -241,6 +270,7 @@ class _HomeScreenState extends State<HomeScreen> {
         userProvider: userProvider,
       ),
       appBar: AppBar(
+        backgroundColor: primaryColor,
         iconTheme: IconThemeData(color: textColor),
         title: Text(
           'Home',
@@ -249,7 +279,7 @@ class _HomeScreenState extends State<HomeScreen> {
         actions: [
           CircleAvatar(
             radius: 15,
-            backgroundColor: Color(0xffd6d382),
+            backgroundColor: Color.fromRGBO(255, 183, 123, 123),
             child: IconButton(
               onPressed: () {
                 // Navigator.of(context).push(
@@ -280,7 +310,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Navigator.of(context).pushNamed('/review');
               },
               child: CircleAvatar(
-                backgroundColor: Color(0xffd6d382),
+                backgroundColor: Color.fromRGBO(255, 183, 123, 123),
                 radius: 15,
                 child: Icon(
                   Icons.shop,
@@ -293,81 +323,20 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+        padding: const EdgeInsets.only(top: 10,bottom: 10, left: 10),
         child: ListView(
           children: [
             Container(
+              margin:EdgeInsets.only(right:10), 
               height: 150,
               decoration: BoxDecoration(
                 image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: NetworkImage(
-                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQi0Xg-k622Sbztlrb-L1o1CAla3zCbVc2lUw&usqp=CAU'),
+                  image: AssetImage(
+                      'assets/cover.jpg'),
                 ),
-                color: Colors.red,
+
                 borderRadius: BorderRadius.circular(10),
-              ),
-              child: Row(
-                children: [
-                  Expanded(
-                    flex: 2,
-                    child: Container(
-                      child: Column(
-                        children: [
-                          Padding(
-                            padding:
-                                const EdgeInsets.only(right: 130, bottom: 10),
-                            child: Container(
-                              height: 50,
-                              width: 100,
-                              decoration: BoxDecoration(
-                                color: Color(0xffd1ad17),
-                                borderRadius: BorderRadius.only(
-                                  bottomRight: Radius.circular(50),
-                                  bottomLeft: Radius.circular(50),
-                                ),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  'Vegi',
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    color: Colors.white,
-                                    shadows: [
-                                      BoxShadow(
-                                          color: Colors.green,
-                                          blurRadius: 10,
-                                          offset: Offset(3, 3))
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Text(
-                            '30% Off',
-                            style: TextStyle(
-                                fontSize: 40,
-                                color: Colors.green[100],
-                                fontWeight: FontWeight.bold),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 20),
-                            child: Text(
-                              'On all vegetables products',
-                              style: TextStyle(
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Container(),
-                  ),
-                ],
               ),
             ),
             _buildHerbsProduct(context),

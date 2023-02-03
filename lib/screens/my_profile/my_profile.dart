@@ -40,21 +40,12 @@ class _MyProfileState extends State<MyProfile> {
     return Scaffold(
       backgroundColor: primaryColor,
       appBar: AppBar(
+        backgroundColor: primaryColor,
         elevation: 0.0,
         title: Text(
-<<<<<<< HEAD
-          "My Profile",
-          style: TextStyle(
-            fontSize: 18,
-            color: textColor,
-=======
           "Profile",
           style: TextStyle(
-            fontSize: 18,
-            color: textColor2,
-            fontWeight: FontWeight.bold,
->>>>>>> d95f242 (drawyr, wishlist, profile pages frontend updated)
-          ),
+              fontSize: 18, color: textColor, fontWeight: FontWeight.bold),
         ),
       ),
       drawer: DrawerSide(
@@ -69,16 +60,9 @@ class _MyProfileState extends State<MyProfile> {
                 color: primaryColor,
               ),
               Container(
-<<<<<<< HEAD
-                height: 548,
-                width: double.infinity,
-=======
-                width: double.infinity,
-                // height: double.infinity,
-                // height: 548,
                 height: 591,
->>>>>>> d95f242 (drawyr, wishlist, profile pages frontend updated)
-                padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                width: double.infinity,
+                padding: EdgeInsets.only(left: 15,right: 15, top: 10),
                 decoration: BoxDecoration(
                   color: scaffoldBackgroundColor,
                   borderRadius: BorderRadius.only(
@@ -105,64 +89,23 @@ class _MyProfileState extends State<MyProfile> {
                                   Text(
                                     userData.userName,
                                     style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.bold,
-                                        color: textColor),
+                                        fontSize: 14, color: textColor2),
                                   ),
                                   SizedBox(
                                     height: 10,
                                   ),
-                                  Text(userData.userEmail),
+                                  Text(
+                                    userData.userEmail,
+                                    style: TextStyle(
+                                        fontSize: 14, color: textColor2),
+                                  ),
                                 ],
                               ),
-<<<<<<< HEAD
-                              CircleAvatar(
-                                radius: 15,
-                                backgroundColor: primaryColor,
-                                child: CircleAvatar(
-                                  radius: 12,
-                                  child: Icon(
-                                    Icons.edit,
-                                    color: primaryColor,
-                                  ),
-                                  backgroundColor: scaffoldBackgroundColor,
-                                ),
-                              )
-=======
-                              // CircleAvatar(
-                              //   radius: 15,
-                              //   backgroundColor: primaryColor,
-                              //   child: CircleAvatar(
-                              //     radius: 12,
-                              //     child: Icon(
-                              //       Icons.edit,
-                              //       color: primaryColor,
-                              //     ),
-                              //     backgroundColor: scaffoldBackgroundColor,
-                              //   ),
-                              // )
->>>>>>> d95f242 (drawyr, wishlist, profile pages frontend updated)
                             ],
                           ),
                         ),
                       ],
                     ),
-                    //   listTile(icon: Icons.shop_outlined, title: "My Orders" , tap:(){
-                    //      Navigator.of(context).push(MaterialPageRoute(builder: (context){
-                    //   return MyOrder();
-                    // }));
-                    //   }),
-                    // listTile(
-                    //     icon: Icons.location_on_outlined,
-                    //     title: "My Delivery Address"),
-                    // listTile(
-                    //     icon: Icons.person_outline, title: "Refer A Friends"),
-                    // listTile(
-                    //     icon: Icons.file_copy_outlined,
-                    //     title: "Terms & Conditions"),
-                    // listTile(
-                    //     icon: Icons.policy_outlined, title: "Privacy Policy"),
-                    // listTile(icon: Icons.add_chart, title: "About"),
                     listTile(
                         icon: Icons.exit_to_app_outlined,
                         title: "Log Out",
@@ -177,7 +120,12 @@ class _MyProfileState extends State<MyProfile> {
                         }),
                   ],
                 ),
-              )
+              ),
+              Expanded(
+                  child: Container(
+                    
+                color: Colors.white,
+              ))
             ],
           ),
           Padding(
@@ -199,3 +147,127 @@ class _MyProfileState extends State<MyProfile> {
     );
   }
 }
+
+
+
+
+
+
+
+
+          // Column(
+          //   children: [
+          //     Container(
+          //       height: 100,
+          //       color: primaryColor,
+          //     ),
+          //     Container(
+          //       height: 591,
+          //       width: double.infinity,
+          //       padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+          //       decoration: BoxDecoration(
+          //         color: scaffoldBackgroundColor,
+          //         borderRadius: BorderRadius.only(
+          //           topLeft: Radius.circular(30),
+          //           topRight: Radius.circular(30),
+          //         ),
+          //       ),
+          //       child: ListView(
+          //         children: [
+          //           Row(
+          //             mainAxisAlignment: MainAxisAlignment.end,
+          //             children: [
+          //               Container(
+          //                 width: 250,
+          //                 height: 80,
+                         
+          //                 padding: EdgeInsets.only(left: 20),
+          //                 child: Row(
+          //                   mainAxisAlignment: MainAxisAlignment.spaceAround,
+          //                   children: [
+          //                     Column(
+          //                       mainAxisAlignment: MainAxisAlignment.center,
+          //                       crossAxisAlignment: CrossAxisAlignment.start,
+          //                       children: [
+          //                         Text(
+          //                           userData.userName,
+          //                           style: TextStyle(
+          //                               fontSize: 14,
+                                       
+          //                               color: textColor2),
+          //                         ),
+          //                         SizedBox(
+          //                           height: 10,
+          //                         ),
+          //                         Text(userData.userEmail, style: TextStyle(
+          //                               fontSize: 14,
+                                      
+          //                               color: textColor2),),
+          //                       ],
+          //                     ),
+                             
+          //                     // CircleAvatar(
+          //                     //   radius: 15,
+          //                     //   backgroundColor: primaryColor,
+          //                     //   child: CircleAvatar(
+          //                     //     radius: 12,
+          //                     //     child: Icon(
+          //                     //       Icons.edit,
+          //                     //       color: primaryColor,
+          //                     //     ),
+          //                     //     backgroundColor: scaffoldBackgroundColor,
+          //                     //   ),
+          //                     // )
+          //                   ],
+          //                 ),
+          //               ),
+          //             ],
+          //           ),
+          //           //   listTile(icon: Icons.shop_outlined, title: "My Orders" , tap:(){
+          //           //      Navigator.of(context).push(MaterialPageRoute(builder: (context){
+          //           //   return MyOrder();
+          //           // }));
+          //           //   }),
+          //           // listTile(
+          //           //     icon: Icons.location_on_outlined,
+          //           //     title: "My Delivery Address"),
+          //           // listTile(
+          //           //     icon: Icons.person_outline, title: "Refer A Friends"),
+          //           // listTile(
+          //           //     icon: Icons.file_copy_outlined,
+          //           //     title: "Terms & Conditions"),
+          //           // listTile(
+          //           //     icon: Icons.policy_outlined, title: "Privacy Policy"),
+          //           // listTile(icon: Icons.add_chart, title: "About"),
+          //           listTile(
+          //               icon: Icons.exit_to_app_outlined,
+          //               title: "Log Out",
+          //               tap: () async {
+          //                 print("logout is tapped");
+          //                 await GoogleSignIn().signOut();
+          //                 await fireabase.signOut();
+          //                 Navigator.push(context,
+          //                     MaterialPageRoute(builder: (context) {
+          //                   return SignIn();
+          //                 }));
+          //               }),
+          //         ],
+          //       ),
+          //     )
+          //   ],
+          // ),
+          // Padding(
+          //   padding: const EdgeInsets.only(top: 40, left: 30),
+          //   child: CircleAvatar(
+          //     radius: 50,
+          //     backgroundColor: primaryColor,
+          //     child: CircleAvatar(
+          //         backgroundImage: NetworkImage(
+          //           userData.userImage ??
+          //               "https://s3.envato.com/files/328957910/vegi_thumb.png",
+          //         ),
+          //         radius: 45,
+          //         backgroundColor: scaffoldBackgroundColor),
+          //   ),
+          // )
+        

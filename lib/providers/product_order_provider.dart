@@ -121,13 +121,13 @@ class ProductOrderProvider with ChangeNotifier {
 
     // print("xxxxxxxxxxx");
     // print("end fetch order list");
-
+   isLoading = false;
     OrderMap = orderListMap;
     notifyListeners();
     // isLoading = false;
   } // fetchorderlist end
 
-  addOrder(String cashcheck) async {
+ Future<void> addOrder(String cashcheck,cardNumber) async {
     //  DocumentSnapshot tvalue = await FirebaseFirestore.instance.collection("OrderCart").doc(FirebaseAuth.instance.currentUser.uid).get();
     //  tvalue.get("allOrders");
     //  print( tvalue.get("allOrders").);
@@ -172,6 +172,7 @@ class ProductOrderProvider with ChangeNotifier {
         'dateTime': DateTime.now(),
         'orderDocKey': docKey,
         'paymentgetway': cashcheck,
+        'cardNumber': cardNumber,
       });
 
       QuerySnapshot isUserSetInOrderList =
@@ -241,8 +242,7 @@ class ProductOrderProvider with ChangeNotifier {
 
   bool rateLoaded = false;
   bool get getRateLoaded => rateLoaded;
-  bool isDone = false;
-  bool get getIsDone => isDone;
+ 
 
  Future<void>  addCardNumber(String cardNumber, String holderName, String expireDate,
       String accountType) async {
@@ -291,8 +291,12 @@ class ProductOrderProvider with ChangeNotifier {
     } catch (e) {}
     notifyListeners(); 
   }
-
+   bool isDone = false;
+  bool get getIsDone => isDone;
   Future<void> setUserRating(String productId, double rate, String category) async {
+    print("productid ${productId}");
+    print("rate ${rate}");
+    print("category ${category}");
     rateLoaded = true;
     try {
       isDone = true;
@@ -301,7 +305,7 @@ class ProductOrderProvider with ChangeNotifier {
           .doc(FirebaseAuth.instance.currentUser.uid)
           .collection('product')
           .doc(productId)
-          .set({'rate': rate}).then((value) => print("worked"));
+          .set({'rate': rate}).then((value) => print("user rate is set"));
       DocumentSnapshot rateData = await FirebaseFirestore.instance
           .collection(category)
           .doc(productId)
@@ -336,22 +340,43 @@ class ProductOrderProvider with ChangeNotifier {
   List<double> get getRateList => rateList;
   Future<void> getUserRating(List<String> productId) async {
     rateList = [];
+    //  print("product id list in provider ");
+    // print(productId);
+    // print("product id list in provider end ");
+    double singleRate = 0 ; 
     double norate = 0;
     productId.forEach((element) async {
+          // DocumentSnapshot rate = await FirebaseFirestore.instance
+          // .collection('userrating')
+          // .doc(FirebaseAuth.instance.currentUser.uid)
+          // .collection('product')
+          // .doc(element)
+          // .get();
       DocumentSnapshot rate = await FirebaseFirestore.instance
           .collection('userrating')
           .doc(FirebaseAuth.instance.currentUser.uid)
           .collection('product')
           .doc(element)
           .get();
+          print("rate exist is : ${rate.exists}");
+        
+          // print("single rate is : ${singleRate+10}");
       if (rate.exists) {
-        rateList.add(rate['rate']);
+        rateList.add(singleRate);
+          singleRate = rate['rate'];
+          rateList.add(singleRate);
+        print("rate is true inside if");
+        // print("id : ${element} rate: ${rate['rate']}");
       } else {
+         print("rate is true inside if");
         rateList.add(norate);
       }
     });
+    print("rate list is");
+    print(rateList);
     print("ratelist in provider: ${rateList.length}");
     // notifyListeners();
-    return rateList;
+    //  notifyListeners();
+    return rateList; 
   }
 }

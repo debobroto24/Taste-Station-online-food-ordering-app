@@ -50,7 +50,7 @@ class ReviewCart extends StatelessWidget {
     reviewCartProvider.getReviewCartData();
     return Scaffold(
       bottomNavigationBar: ListTile(
-        title: Text("Total Aount"),
+        title: Text("Total Amount"),
         subtitle: Text(
           "৳ ${reviewCartProvider.getTotalPrice()}",
           style: TextStyle(
@@ -60,7 +60,7 @@ class ReviewCart extends StatelessWidget {
         trailing: Container(
           width: 160,
           child: MaterialButton(
-            child: Text("Submit"),
+            child: Text("Place Order", style: TextStyle(color:Colors.white),),
             color: primaryColor,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(
@@ -81,6 +81,7 @@ class ReviewCart extends StatelessWidget {
         ),
       ),
       appBar: AppBar(
+        backgroundColor: primaryColor,
         title: Text(
           "Review Cart",
           style: TextStyle(color: textColor, fontSize: 18),

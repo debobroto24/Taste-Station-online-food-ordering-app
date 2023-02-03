@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/config/colors.dart';
 
 class PaymentSuccessful extends StatelessWidget {
-  const PaymentSuccessful({Key key}) : super(key: key);
+  final bool isCashOn; 
+  const PaymentSuccessful({Key key, this.isCashOn}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,10 +15,10 @@ class PaymentSuccessful extends StatelessWidget {
             children: [
               Column(
                 children: [
-                  Center(child: Icon(Icons.check_circle_rounded, size: MediaQuery.of(context).size.width * .50, color: Color.fromARGB(255, 238, 156, 31),)),
+                  Center(child: Icon(Icons.check_circle_rounded, size: MediaQuery.of(context).size.width * .50, color:primaryColor,)),
                   SizedBox(height: 10), 
                   Text(
-                        "Payment Approved",
+                       !isCashOn? "Payment Approved": "Order Confirmed",
                         style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
@@ -24,7 +26,7 @@ class PaymentSuccessful extends StatelessWidget {
                       ),
                   SizedBox(height: 15), 
                   Text(
-                        "Payment Successful",
+                       !isCashOn? "Payment Successful" :"We are preparing your food",
                         style: TextStyle(
                             fontSize: 17,
                             fontWeight: FontWeight.normal,
@@ -38,9 +40,9 @@ class PaymentSuccessful extends StatelessWidget {
                   children: [
                     Container(
                       width: MediaQuery.of(context).size.width * .75,
-                      height: 40,
+                      padding: EdgeInsets.symmetric(vertical: 15),
                       decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 238, 156, 31),
+                        color: primaryColor,
                         borderRadius: BorderRadius.circular(10),
                       ),
                       alignment: Alignment.center,
@@ -53,20 +55,26 @@ class PaymentSuccessful extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 20),
-                    Container(
-                      width: MediaQuery.of(context).size.width * .75,
-                      height: 40,
-                      decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 216, 211, 205),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      alignment: Alignment.center,
-                      child: Text(
-                        "Go to Home Page",
-                        style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.normal,
-                            color: Colors.black),
+                    GestureDetector(
+                      onTap: (){
+                          Navigator.of(context).pushNamed("/home");
+                      },
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * .75,
+                          padding: EdgeInsets.symmetric(vertical: 15),
+                        decoration: BoxDecoration(
+                          // color: Color.fromARGB(217,217,217, 205),
+                          color: Color.fromRGBO(217,217,217, 100),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        alignment: Alignment.center,
+                        child: Text(
+                          "Go to Home Page",
+                          style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.normal,
+                              color: Colors.black),
+                        ),
                       ),
                     ),
                   ],

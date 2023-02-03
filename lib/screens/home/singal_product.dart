@@ -66,10 +66,10 @@ class _SingalProductState extends State<SingalProduct> {
         children: [
           Container(
             margin: EdgeInsets.only(right: 10),
-            height: 245,
+            height: 235,
             width: 165,
             decoration: BoxDecoration(
-              color: Color(0xffd9dad9),
+              color: Color.fromRGBO(217, 217, 217, 100),
               // color: Colors.red,
               borderRadius: BorderRadius.circular(10),
             ),
@@ -99,6 +99,7 @@ class _SingalProductState extends State<SingalProduct> {
                         ),
                       ),),
                 ),
+                SizedBox(height: 8,),
                 Padding( 
                   padding:
                         const EdgeInsets.only(left:10),
@@ -106,10 +107,10 @@ class _SingalProductState extends State<SingalProduct> {
                             rating: widget.rate,
                             itemBuilder: (context, index) => Icon(
                               Icons.star,
-                              color: Colors.amber,
+                              color: primaryColor,
                             ),
                             itemCount: 5,
-                            itemSize: 20.0,
+                            itemSize: 18.0,
                             direction: Axis.horizontal,
                           ),
                 ),
@@ -126,11 +127,11 @@ class _SingalProductState extends State<SingalProduct> {
                           isbig ? firstHalf + "..." : firstHalf ?? "...",
                           maxLines: 1,
                           style: TextStyle(
-                            color: textColor,
+                            color: textColor2,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-
+SizedBox(height: 6,),
                         Text(
                           // '${widget.productPrice}\$/${unitData == null?firstValue:unitData}',
                           '${widget.productPrice}\৳',

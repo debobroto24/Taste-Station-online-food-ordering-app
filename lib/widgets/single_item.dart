@@ -42,11 +42,7 @@ class _SingleItemState extends State<SingleItem> {
 
   @override
   Widget build(BuildContext context) {
-<<<<<<< HEAD
     int a = 0; 
-=======
-    int a = 0;
->>>>>>> d95f242 (drawyr, wishlist, profile pages frontend updated)
     getCount();
     reviewCartProvider = Provider.of<ReviewCartProvider>(context);
     reviewCartProvider.getReviewCartData();
@@ -56,48 +52,35 @@ class _SingleItemState extends State<SingleItem> {
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
           child: Row(
             children: [
-<<<<<<< HEAD
               // image 
               Expanded(
-                child: Container(
-                  width:100,
-                  height: 90,
-                  child: Center(
-                    child: Image.network(
-                      widget.productImage,
-                      fit:BoxFit.cover,
-                      height: 90 , 
-                      width:100, 
-=======
-              // image
-              Expanded(
-                child: Container(
-                  width: 100,
-                  height: 90,
-                  // child: Center(
-                  //   child: Image.network(
-                  //     widget.productImage,
-                  //     fit: BoxFit.cover,
-                  //     height: 90,
-                  //     width: 100,
-                  //   ),
-                  // ),
-                  child: CircleAvatar(
-                    radius: 50,
-                    backgroundColor: primaryColor,
-                    child: CircleAvatar(
-                      backgroundImage: NetworkImage(widget.productImage),
-                      radius: 45,
->>>>>>> d95f242 (drawyr, wishlist, profile pages frontend updated)
-                    ),
+                // child: Container(
+                //   width:100,
+                //   height: 90,
+                //   child: Center(
+                //     child: Image.network(
+                //       widget.productImage,
+                //       fit:BoxFit.cover,
+                //       height: 90 , 
+                //       width:100, 
+                //     ),
+                //   ),
+                // ),
+
+
+            child: CircleAvatar(
+              radius: 45,
+              backgroundColor: primaryColor,
+              child: CircleAvatar(
+                  backgroundImage: NetworkImage(
+                   widget.productImage,
                   ),
-                ),
+                  radius: 43,
+                  backgroundColor: scaffoldBackgroundColor),
+            ),
+          
               ),
-<<<<<<< HEAD
               // name and price 
-=======
-              // name and price
->>>>>>> d95f242 (drawyr, wishlist, profile pages frontend updated)
               Expanded(
                 child: Container(
                   height: 90,
@@ -114,18 +97,15 @@ class _SingleItemState extends State<SingleItem> {
                           Text(
                             widget.productName ?? "",
                             style: TextStyle(
-                                color: textColor,
+                                color: textColor2,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16),
                           ),
                           Text(
                             "${widget.productPrice} ৳" ?? " ",
-<<<<<<< HEAD
                             
-=======
->>>>>>> d95f242 (drawyr, wishlist, profile pages frontend updated)
                             style: TextStyle(
-                                color: textColor, fontWeight: FontWeight.bold),
+                                color: textColor2, fontWeight: FontWeight.bold),
                           ),
                         ],
                       ),
@@ -161,7 +141,6 @@ class _SingleItemState extends State<SingleItem> {
                       //               });
                       //         },
 
-<<<<<<< HEAD
                               // gram unit hide  
                               // child: Container(
                               //   margin: EdgeInsets.only(right: 15),
@@ -195,41 +174,6 @@ class _SingleItemState extends State<SingleItem> {
                             
                           //   )
                           // : Text(widget.productUnit ??  '')
-=======
-                      // gram unit hide
-                      // child: Container(
-                      //   margin: EdgeInsets.only(right: 15),
-                      //   padding: EdgeInsets.symmetric(horizontal: 10),
-                      //   height: 35,
-                      //   decoration: BoxDecoration(
-                      //     border: Border.all(color: Colors.grey),
-                      //     borderRadius: BorderRadius.circular(30),
-                      //   ),
-                      //   child: Row(
-                      //     children: [
-                      //       Expanded(
-                      //         child: Text(
-                      //          "50 Gram",
-                      //           style: TextStyle(
-                      //             color: Colors.grey,
-                      //             fontSize: 14,
-                      //           ),
-                      //         ),
-                      //       ),
-                      //       Center(
-                      //         child: Icon(
-                      //           Icons.arrow_drop_down,
-                      //           size: 20,
-                      //           color: primaryColor,
-                      //         ),
-                      //       )
-                      //     ],
-                      //   ),
-                      // ),
-
-                      //   )
-                      // : Text(widget.productUnit ??  '')
->>>>>>> d95f242 (drawyr, wishlist, profile pages frontend updated)
                     ],
                   ),
                 ),
@@ -253,21 +197,13 @@ class _SingleItemState extends State<SingleItem> {
                             children: [
                               InkWell(
                                 onTap: widget.onDelete,
-<<<<<<< HEAD
-                                child: Icon(
-                                  Icons.delete,
-                                  size: 30,
-                                  color: Colors.black54,
-=======
-                                child: Padding(
-                                  padding: EdgeInsets.only(top: 15),
+                                child: Padding (
+                                  padding:EdgeInsets.only(top: 15), 
                                   child: Icon(
                                     Icons.delete,
                                     size: 30,
-                                    // color: Colors.black54,
-                                    color: primaryColor,
+                                    color: Colors.deepOrangeAccent,
                                   ),
->>>>>>> d95f242 (drawyr, wishlist, profile pages frontend updated)
                                 ),
                               ),
                               SizedBox(
@@ -292,10 +228,7 @@ class _SingleItemState extends State<SingleItem> {
                                                   Fluttertoast.showToast(
                                                     msg:
                                                         "You reach minimum limit",
-<<<<<<< HEAD
                                                 
-=======
->>>>>>> d95f242 (drawyr, wishlist, profile pages frontend updated)
                                                   );
                                                 } else {
                                                   setState(() {
@@ -321,11 +254,7 @@ class _SingleItemState extends State<SingleItem> {
                                               ),
                                             ),
                                             Text(
-<<<<<<< HEAD
                                               "$count" ??  '',
-=======
-                                              "$count" ?? '',
->>>>>>> d95f242 (drawyr, wishlist, profile pages frontend updated)
                                               style: TextStyle(
                                                 color: primaryColor,
                                               ),
@@ -368,21 +297,12 @@ class _SingleItemState extends State<SingleItem> {
             ],
           ),
         ),
-<<<<<<< HEAD
-        widget.isBool == false
-            ? Container()
-            : Divider(
-                height: 1,
-                color: Colors.black45,
-              )
-=======
         // widget.isBool == false
         //     ? Container()
-        // : Divider(
-        //     height: 1,
-        //     color: Colors.black45,
-        //   )
->>>>>>> d95f242 (drawyr, wishlist, profile pages frontend updated)
+        //     : Divider(
+        //         height: 1,
+        //         color: Colors.black45,
+        //       )
       ],
     );
   }

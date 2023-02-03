@@ -20,6 +20,7 @@ class _DeliveryDetailsState extends State<DeliveryDetails> {
     deliveryAddressProvider.getDeliveryAddressData();
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: primaryColor,
         title: Text("Delivery Details"),
       ),
       floatingActionButton: FloatingActionButton(

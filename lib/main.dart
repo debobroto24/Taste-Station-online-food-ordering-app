@@ -63,7 +63,6 @@ class MyApp extends StatelessWidget {
           create: (context) => CheckoutProvider(),
         ),
         ChangeNotifierProvider<ProductOrderProvider>(
-<<<<<<< HEAD
             create: (context) => ProductOrderProvider()), 
       ],
       child: MaterialApp(
@@ -71,17 +70,6 @@ class MyApp extends StatelessWidget {
             // primaryColor: primaryColor,
             primaryColor: Colors.white,
             scaffoldBackgroundColor: scaffoldBackgroundColor),
-=======
-            create: (context) => ProductOrderProvider()),
-      ],
-      child: MaterialApp(
-        theme: ThemeData(
-          // primaryColor: primaryColor,
-          primaryColor: Colors.white,
-          // scaffoldBackgroundColor: scaffoldBackgroundColor,
-          scaffoldBackgroundColor: whiteScaffoldBackgroundColor,
-        ),
->>>>>>> d95f242 (drawyr, wishlist, profile pages frontend updated)
         debugShowCheckedModeBanner: false,
         home: StreamBuilder(
           stream: FirebaseAuth.instance.authStateChanges(),

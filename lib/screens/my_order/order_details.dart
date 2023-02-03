@@ -22,6 +22,7 @@ class OrderDetails extends StatelessWidget {
     // productIdList = ['aaa','ddd'];
     int i = 0;
     Timestamp dateTime;
+    productIdList = []; 
     orderDetails.forEach((element) {
       // print(element.cartName);
       if (i == 0) {
@@ -31,9 +32,13 @@ class OrderDetails extends StatelessWidget {
       productIdList.add(element.cartId);
     });
 
+    // print("product id list start ");
+    // print(productIdList);
+    // print("product id list end ");
+
     // in set review cart product id and cart id is same
     ProductOrderProvider productOrderProvider;
-    productOrderProvider = Provider.of<ProductOrderProvider>(context);
+    productOrderProvider = Provider.of<ProductOrderProvider>(context,listen: true);
     //  productOrderProvider.getUserRating(productIdList);
     //  List<double> rateList = productOrderProvider.getRateList;
     //  print(rateList.length);
@@ -106,8 +111,10 @@ class OrderDetails extends StatelessWidget {
                               //   direction: Axis.horizontal,
                               // ),
                               Container(
-                                child: productOrderProvider.getIsDone
-                                    ? RatingBar.builder(
+                                // child: productOrderProvider.getIsDone
+                                //     ? 
+                                //  productOrderProvider.getUserRating(productIdList);
+                                    child:RatingBar.builder(
                                         initialRating: 0,
                                         minRating: 0,
                                         itemSize: 20,
@@ -126,16 +133,16 @@ class OrderDetails extends StatelessWidget {
                                         },
                                         // ),
                                       )
-                                    : RatingBarIndicator(
-                                        rating: 2,
-                                        itemBuilder: (context, index) => Icon(
-                                          Icons.star,
-                                          color: Colors.amber,
-                                        ),
-                                        itemCount: 5,
-                                        itemSize: 25.0,
-                                        direction: Axis.horizontal,
-                                      ),
+                                    // : RatingBarIndicator(
+                                    //     rating: 2,
+                                    //     itemBuilder: (context, index) => Icon(
+                                    //       Icons.star,
+                                    //       color: Colors.amber,
+                                    //     ),
+                                    //     itemCount: 5,
+                                    //     itemSize: 25.0,
+                                    //     direction: Axis.horizontal,
+                                    //   ),
                               ),
                               Container(
                                 child: productOrderProvider.getRateLoaded

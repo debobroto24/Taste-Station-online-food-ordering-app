@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/models/order_cart_model.dart';
 import 'package:food_app/route_helper/add_card_argument.dart';
+import 'package:food_app/route_helper/all_card_argument.dart';
 import 'package:food_app/screens/check_out/payment_summary/add_card.dart';
 import 'package:food_app/screens/check_out/payment_summary/all_cards.dart';
 import 'package:food_app/screens/check_out/payment_summary/load_payment.dart';
@@ -43,12 +44,13 @@ class RouteGenerator {
           // print(settings.arguments); 
           return OrderDetails(orderDetails:  settings.arguments);
         });
-      case '/loadpayment':
-        return MaterialPageRoute(builder: (_) => LoadPayment());
+      // case '/loadpayment':
+      //   return MaterialPageRoute(builder: (_) => LoadPayment());
       case '/allcards': 
-        return MaterialPageRoute(builder: (_)=> AllCards(cardlist:settings.arguments)); 
+      AllCardArgument allCardArgument = args; 
+        return MaterialPageRoute(builder: (_)=> AllCards(cardlist:allCardArgument.cardlist , accountType:allCardArgument.accountType )); 
       case '/paymentsuccessful': 
-        return MaterialPageRoute(builder: (_)=> PaymentSuccessful()); 
+        return MaterialPageRoute(builder: (_)=> PaymentSuccessful(isCashOn: settings.arguments,)); 
       case '/addcard': 
         AddCardArgument addCardArgument = args;
         return MaterialPageRoute(builder: (_)=> AddCard(image: addCardArgument.image,accountType: addCardArgument.accountType,)); 

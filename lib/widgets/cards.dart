@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/config/colors.dart';
 
 class Cards extends StatelessWidget {
   final String cardnumber;
@@ -39,11 +40,21 @@ class Cards extends StatelessWidget {
             style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 17,
-                color: Colors.black45),
+                color: Colors.black..withOpacity(.6)),
           ),
             ],
           ),
-          Icon(Icons.delete_forever_rounded,size:35,color:Colors.black45), 
+          // Container(
+          //   height: 35, 
+          //   padding: EdgeInsets.symmetric(horizontal: 10),
+          //   alignment: Alignment.center,
+          //   decoration: BoxDecoration(  
+          //      color:Colors.orangeAccent,
+          //     borderRadius: BorderRadius.circular(12)
+          //   ),
+          //   child:Text("delete")
+          // ), 
+          Icon(Icons.delete_sweep_rounded,size:35,color:primaryColor), 
          
         ],
       ),

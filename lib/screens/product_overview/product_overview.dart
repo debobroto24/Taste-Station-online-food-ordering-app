@@ -107,8 +107,8 @@ class _ProductOverviewState extends State<ProductOverview> {
       bottomNavigationBar: Row(
         children: [
           bonntonNavigatorBar(
-              backgroundColor: textColor,
-              color: Colors.white70,
+              backgroundColor: textColor2,
+              color: textColor,
               iconColor: Colors.grey,
               title: "Add To WishList",
               iconData: wishListBool == false
@@ -146,6 +146,7 @@ class _ProductOverviewState extends State<ProductOverview> {
         ],
       ),
       appBar: AppBar(
+        backgroundColor: primaryColor,
         iconTheme: IconThemeData(color: textColor),
         title: Text(
           "Product Overview",
@@ -162,13 +163,14 @@ class _ProductOverviewState extends State<ProductOverview> {
                 children: [
                   ListTile(
                     title: Text(widget.productName),
-                    subtitle: Text("50 ৳"),
+                    // subtitle: Text("50 ৳"),
                   ),
                   Container(
+                    width: double.infinity,
                     height: 250,
-                    padding: EdgeInsets.all(40),
+                    // padding: EdgeInsets.all(40),
                     child: Image.network(
-                      widget.productImage ?? "",
+                      widget.productImage ?? "",fit:BoxFit.cover,
                     ),
                   ),
                   Container(
@@ -182,7 +184,7 @@ class _ProductOverviewState extends State<ProductOverview> {
                           rating: widget.rate,
                           itemBuilder: (context, index) => Icon(
                             Icons.star,
-                            color: Colors.amber,
+                            color: primaryColor,
                           ),
                           itemCount: 5,
                           itemSize: 25.0,
@@ -299,7 +301,7 @@ class _ProductOverviewState extends State<ProductOverview> {
                     widget.productDescription ?? "",
                     style: TextStyle(
                       fontSize: 16,
-                      color: textColor,
+                      color: textColor2,
                     ),
                   ),
                 ],

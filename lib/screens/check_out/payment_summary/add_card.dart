@@ -5,6 +5,8 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:food_app/config/colors.dart';
 import 'package:food_app/models/card_model.dart';
 import 'package:food_app/providers/product_order_provider.dart';
+import 'package:food_app/route_helper/add_card_argument.dart';
+import 'package:food_app/route_helper/all_card_argument.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
@@ -82,7 +84,7 @@ class _AddCardState extends State<AddCard> {
       orderProvider.addCardNumber(cardnoCon.text, nameCon.text, dateInput.text.toString(), widget.accountType.toString()); 
        await orderProvider.getAllCard(widget.accountType);
                   List<CardModel> cardlist = await orderProvider.getCardList;
-      Navigator.of(context).pushNamed('/allcards',   arguments:  cardlist,);
+      Navigator.of(context).pushNamed('/allcards',   arguments:  AllCardArgument(cardlist: cardlist,accountType: ''),);
     }
   }
   @override
