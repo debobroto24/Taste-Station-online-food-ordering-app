@@ -42,10 +42,18 @@ class _MyProfileState extends State<MyProfile> {
       appBar: AppBar(
         elevation: 0.0,
         title: Text(
+<<<<<<< HEAD
           "My Profile",
           style: TextStyle(
             fontSize: 18,
             color: textColor,
+=======
+          "Profile",
+          style: TextStyle(
+            fontSize: 18,
+            color: textColor2,
+            fontWeight: FontWeight.bold,
+>>>>>>> d95f242 (drawyr, wishlist, profile pages frontend updated)
           ),
         ),
       ),
@@ -61,8 +69,15 @@ class _MyProfileState extends State<MyProfile> {
                 color: primaryColor,
               ),
               Container(
+<<<<<<< HEAD
                 height: 548,
                 width: double.infinity,
+=======
+                width: double.infinity,
+                // height: double.infinity,
+                // height: 548,
+                height: 591,
+>>>>>>> d95f242 (drawyr, wishlist, profile pages frontend updated)
                 padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                 decoration: BoxDecoration(
                   color: scaffoldBackgroundColor,
@@ -100,6 +115,7 @@ class _MyProfileState extends State<MyProfile> {
                                   Text(userData.userEmail),
                                 ],
                               ),
+<<<<<<< HEAD
                               CircleAvatar(
                                 radius: 15,
                                 backgroundColor: primaryColor,
@@ -112,6 +128,20 @@ class _MyProfileState extends State<MyProfile> {
                                   backgroundColor: scaffoldBackgroundColor,
                                 ),
                               )
+=======
+                              // CircleAvatar(
+                              //   radius: 15,
+                              //   backgroundColor: primaryColor,
+                              //   child: CircleAvatar(
+                              //     radius: 12,
+                              //     child: Icon(
+                              //       Icons.edit,
+                              //       color: primaryColor,
+                              //     ),
+                              //     backgroundColor: scaffoldBackgroundColor,
+                              //   ),
+                              // )
+>>>>>>> d95f242 (drawyr, wishlist, profile pages frontend updated)
                             ],
                           ),
                         ),
