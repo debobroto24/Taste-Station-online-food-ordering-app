@@ -57,7 +57,15 @@ class _WishLsitState extends State<WishLsit> {
       appBar: AppBar(
         title: Text(
           "WishList",
+<<<<<<< HEAD
           style: TextStyle(color: textColor, fontSize: 18),
+=======
+          style: TextStyle(
+            color: textColor2,
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+>>>>>>> d95f242 (drawyr, wishlist, profile pages frontend updated)
         ),
       ),
       body: ListView.builder(
@@ -77,7 +85,11 @@ class _WishLsitState extends State<WishLsit> {
                 productId: data.productId,
                 productQuantity: data.productQuantity,
                 onDelete: () {
+<<<<<<< HEAD
                   showAlertDialog(context,data);
+=======
+                  showAlertDialog(context, data);
+>>>>>>> d95f242 (drawyr, wishlist, profile pages frontend updated)
                 },
               ),
             ],
