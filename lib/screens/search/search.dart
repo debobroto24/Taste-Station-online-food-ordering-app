@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/config/colors.dart';
 import 'package:food_app/models/product_model.dart';
 import 'package:food_app/widgets/single_item.dart';
-
 
 class Search extends StatefulWidget {
   final List<ProductModel> search;
@@ -12,7 +12,6 @@ class Search extends StatefulWidget {
 
 class _SearchState extends State<Search> {
   String query = "";
-
 
   searchItem(String query) {
     List<ProductModel> searchFood = widget.search.where((element) {
@@ -26,13 +25,13 @@ class _SearchState extends State<Search> {
     List<ProductModel> _searchItem = searchItem(query);
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: primaryColor,
         title: Text("Search"),
         actions: [
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: IconButton(
-              onPressed: () {
-              },
+              onPressed: () {},
               icon: Icon(Icons.sort),
             ),
           ),

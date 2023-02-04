@@ -39,6 +39,8 @@ class UserProvider with ChangeNotifier {
         userUid: value.get("userUid"),
       );
       currentData = userModel;
+      print("current user");
+      print(currentData);
       notifyListeners();
     }
   }
