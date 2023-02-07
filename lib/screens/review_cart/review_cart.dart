@@ -28,7 +28,7 @@ class ReviewCart extends StatelessWidget {
     // set up the AlertDialog
     AlertDialog alert = AlertDialog(
       title: Text("Cart Product"),
-      content: Text("Are you devete on cartProduct?"),
+      content: Text("Are you sure?"),
       actions: [
         cancelButton,
         continueButton,

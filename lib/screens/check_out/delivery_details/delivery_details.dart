@@ -13,7 +13,7 @@ class DeliveryDetails extends StatefulWidget {
 }
 
 class _DeliveryDetailsState extends State<DeliveryDetails> {
-   DeliveryAddressModel value;
+  DeliveryAddressModel value;
   @override
   Widget build(BuildContext context) {
     CheckoutProvider deliveryAddressProvider = Provider.of(context);
@@ -29,9 +29,7 @@ class _DeliveryDetailsState extends State<DeliveryDetails> {
         onPressed: () {
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (context) => AddDeliverAddress(
-
-              ),
+              builder: (context) => AddDeliverAddress(),
             ),
           );
         },
@@ -87,12 +85,14 @@ class _DeliveryDetailsState extends State<DeliveryDetails> {
                   children: deliveryAddressProvider.getDeliveryAddressList
                       .map<Widget>((e) {
                     setState(() {
-                    value  = e;
+                      value = e;
                     });
                     return SingleDeliveryItem(
-                      address:
-                          "aera, ${e.aera}, street, ${e.street}, society ${e.scoirty}, pincode ${e.pinCode}",
-                      title: "${e.firstName} ${e.lastName}",
+                      // address:
+                      //     "aera, ${e.aera}, street, ${e.street}, society ${e.scoirty}, pincode ${e.pinCode}",
+                      address: "hourse number, ${e.aera}, street, ${e.street},",
+                      // title: "${e.aera}",
+                      title: " ",
                       number: e.mobileNo,
                       addressType: e.addressType == "AddressTypes.Home"
                           ? "Home"

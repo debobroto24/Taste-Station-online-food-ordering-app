@@ -21,7 +21,7 @@ class ProductOverview extends StatefulWidget {
   final String productDescription;
   final double rate;
   final int totalRate;
-  final String category; 
+  final String category;
   ProductOverview(
       {this.productId,
       this.productImage,
@@ -29,7 +29,8 @@ class ProductOverview extends StatefulWidget {
       this.productPrice,
       this.productDescription,
       this.rate,
-      this.totalRate , this.category});
+      this.totalRate,
+      this.category});
 
   @override
   _ProductOverviewState createState() => _ProductOverviewState();
@@ -100,7 +101,7 @@ class _ProductOverviewState extends State<ProductOverview> {
 
   @override
   Widget build(BuildContext context) {
-       print("check category in Product overview page: ${widget.category}"); 
+    print("check category in Product overview page: ${widget.category}");
     WishListProvider wishListProvider = Provider.of(context);
     getWishtListBool();
     return Scaffold(
@@ -170,7 +171,8 @@ class _ProductOverviewState extends State<ProductOverview> {
                     height: 250,
                     // padding: EdgeInsets.all(40),
                     child: Image.network(
-                      widget.productImage ?? "",fit:BoxFit.cover,
+                      widget.productImage ?? "",
+                      fit: BoxFit.cover,
                     ),
                   ),
                   Container(
@@ -193,7 +195,7 @@ class _ProductOverviewState extends State<ProductOverview> {
                         Text(
                           '${widget.totalRate} Review',
                           style: TextStyle(
-                              fontSize: 20,
+                              fontSize: 16,
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                         ),
@@ -244,7 +246,7 @@ class _ProductOverviewState extends State<ProductOverview> {
                           productName: widget.productName,
                           productPrice: widget.productPrice,
                           productUnit: '500 Gram',
-                          category: widget.category, 
+                          category: widget.category,
                         ),
                         // Container(
                         //   padding: EdgeInsets.symmetric(
@@ -301,7 +303,7 @@ class _ProductOverviewState extends State<ProductOverview> {
                     widget.productDescription ?? "",
                     style: TextStyle(
                       fontSize: 16,
-                      color: textColor2,
+                      color: Colors.black,
                     ),
                   ),
                 ],

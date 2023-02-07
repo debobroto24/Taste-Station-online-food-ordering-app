@@ -9,14 +9,18 @@ class SingleItem extends StatefulWidget {
   bool isBool = false;
   String productImage;
   String productName;
+  bool isSearch = false;
   bool wishList = false;
   int productPrice;
   String productId;
   int productQuantity;
   Function onDelete;
+  Function searchVeiw;
   var productUnit;
   SingleItem(
-      {this.productQuantity,
+      {this.searchVeiw,
+      this.isSearch,
+      this.productQuantity,
       this.productId,
       this.productUnit,
       this.onDelete,
@@ -194,14 +198,34 @@ class _SingleItemState extends State<SingleItem> {
                             children: [
                               InkWell(
                                 onTap: widget.onDelete,
-                                child: Padding(
-                                  padding: EdgeInsets.only(top: 15),
-                                  child: Icon(
-                                    Icons.delete,
-                                    size: 30,
-                                    color: Colors.deepOrangeAccent,
-                                  ),
-                                ),
+                                child: widget.isSearch == true
+                                    ? InkWell(
+                                        onTap: widget.searchVeiw,
+                                        child: Container(
+                                          margin: EdgeInsets.only(top: 10),
+                                          padding: EdgeInsets.symmetric(
+                                              vertical: 5, horizontal: 7),
+                                          decoration: BoxDecoration(
+                                            color: primaryColor,
+                                            borderRadius:
+                                                BorderRadius.circular(5),
+                                          ),
+                                          alignment: Alignment.center,
+                                          child: Text(
+                                            "View Me",
+                                            style: TextStyle(
+                                                fontSize: 14, color: textColor),
+                                          ),
+                                        ),
+                                      )
+                                    : Padding(
+                                        padding: EdgeInsets.only(top: 15),
+                                        child: Icon(
+                                          Icons.delete,
+                                          size: 30,
+                                          color: Colors.deepOrangeAccent,
+                                        ),
+                                      ),
                               ),
                               SizedBox(
                                 height: 5,
