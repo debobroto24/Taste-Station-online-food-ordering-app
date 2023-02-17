@@ -32,8 +32,8 @@ class _WishLsitState extends State<WishLsit> {
 
     // set up the AlertDialog
     AlertDialog alert = AlertDialog(
-      title: Text("WishList Product"),
-      content: Text("Are you devete on wishList Product?"),
+      title: Text("Favourites Food"),
+      content: Text("Are you sure to delete your Favourite Food?"),
       actions: [
         cancelButton,
         continueButton,
@@ -55,35 +55,64 @@ class _WishLsitState extends State<WishLsit> {
     wishListProvider.getWishtListData();
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: primaryColor,
         title: Text(
-          "WishList",
+          "Favourites",
           style: TextStyle(color: textColor, fontSize: 18),
         ),
       ),
-      body: ListView.builder(
-        itemCount: wishListProvider.getWishList.length,
-        itemBuilder: (context, index) {
-          ProductModel data = wishListProvider.getWishList[index];
-          return Column(
-            children: [
-              SizedBox(
-                height: 10,
+      body: wishListProvider.getWishList.length > 0
+          ? ListView.builder(
+              itemCount: wishListProvider.getWishList.length,
+              itemBuilder: (context, index) {
+                ProductModel data = wishListProvider.getWishList[index];
+                return Column(
+                  children: [
+                    SizedBox(
+                      height: 10,
+                    ),
+                    SingleItem(
+                      isBool: true,
+                      productImage: data.productImage,
+                      productName: data.productName,
+                      productPrice: data.productPrice,
+                      productId: data.productId,
+                      productQuantity: data.productQuantity,
+                      onDelete: () {
+                        showAlertDialog(context, data);
+                      },
+                    ),
+                  ],
+                );
+              },
+            )
+          : Align(
+              alignment: Alignment.center,
+              child: Container(
+                padding: EdgeInsets.only(top: 100),
+                alignment: Alignment.center,
+                // width:MediaQuery.of(context).size.width
+                child: Column(
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      height: 200,
+                      padding:
+                          EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                      child: Image.asset('assets/empty_favourites.png',
+                          fit: BoxFit.cover),
+                    ),
+                    Text(
+                      "Opps! Your favourite list is empty",
+                      style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black45),
+                    ),
+                  ],
+                ),
               ),
-              SingleItem(
-                isBool: true,
-                productImage: data.productImage,
-                productName: data.productName,
-                productPrice: data.productPrice,
-                productId: data.productId,
-                productQuantity: data.productQuantity,
-                onDelete: () {
-                  showAlertDialog(context,data);
-                },
-              ),
-            ],
-          );
-        },
-      ),
+            ),
     );
   }
 }

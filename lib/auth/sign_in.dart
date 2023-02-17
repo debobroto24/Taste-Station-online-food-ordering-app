@@ -278,7 +278,7 @@ class _SignInState extends State<SignIn> {
                 children: [
                   Text(
                     'Sign in to contunue',
-                    style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                   Column(
                     children: [
@@ -300,36 +300,36 @@ class _SignInState extends State<SignIn> {
                       //     );
                       //   },
                       // ),
+                      // GestureDetector(
+                      //   onTap: () async {
+                      //     // await _googleSignUp().then(
+                      //     //   (value) => Navigator.of(context).pushReplacement(
+                      //     //     MaterialPageRoute(
+                      //     //       builder: (context) => HomeScreen(),
+                      //     //     ),
+                      //     //   ),
+                      //     // );
+                      //   },
+                      //   child: Container(
+                      //     width: 220,
+                      //     alignment: Alignment.center,
+                      //     padding: EdgeInsets.only(top: 8, bottom: 8),
+                      //     decoration: BoxDecoration(
+                      //       color: Colors.deepOrangeAccent,
+                      //       borderRadius: BorderRadius.circular(3),
+                      //     ),
+                      //     child: Text(
+                      //       "Sign in with Apple",
+                      //       style: TextStyle(
+                      //         color: Colors.white,
+                      //         fontSize: 18,
+                      //       ),
+                      //     ),
+                      //   ),
+                      // ),
+                      SizedBox(height: 15),
                       GestureDetector(
                         onTap: () async {
-                          // await _googleSignUp().then(
-                          //   (value) => Navigator.of(context).pushReplacement(
-                          //     MaterialPageRoute(
-                          //       builder: (context) => HomeScreen(),
-                          //     ),
-                          //   ),
-                          // );
-                        },
-                        child: Container(
-                          width: 220,
-                          alignment: Alignment.center,
-                          padding: EdgeInsets.only(top: 8, bottom: 8),
-                          decoration: BoxDecoration(
-                            color: Colors.deepOrangeAccent,
-                            borderRadius: BorderRadius.circular(3),
-                          ),
-                          child: Text(
-                            "Sign in with Apple",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 15),
-                      GestureDetector( 
-                            onTap: () async {
                           await _googleSignUp().then(
                             (value) => Navigator.of(context).pushReplacement(
                               MaterialPageRoute(

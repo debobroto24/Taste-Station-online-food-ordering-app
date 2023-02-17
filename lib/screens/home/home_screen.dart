@@ -27,8 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              
-              Text('Fried Rice',style: TextStyle(fontSize: 20)),
+              Text('Fried Rice', style: TextStyle(fontSize: 20)),
               GestureDetector(
                 onTap: () {
                   Navigator.of(context).push(
@@ -40,12 +39,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   );
                 },
                 child: Container(
-                  margin:EdgeInsets.only(right:10), 
-                  padding:EdgeInsets.symmetric(vertical: 7,horizontal: 10),
+                  margin: EdgeInsets.only(right: 10),
+                  padding: EdgeInsets.symmetric(vertical: 7, horizontal: 10),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10), 
-                    color:primaryColor, 
-
+                    borderRadius: BorderRadius.circular(10),
+                    color: primaryColor,
                   ),
                   child: Text(
                     'View all',
@@ -64,7 +62,8 @@ class _HomeScreenState extends State<HomeScreen> {
               (herbsProductData) {
                 return SingalProduct(
                   onTap: () {
-                    print("check category in home page: ${herbsProductData.category}"); 
+                    print(
+                        "check category in home page: ${herbsProductData.category}");
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (context) => ProductOverview(
@@ -76,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               herbsProductData.productDescription,
                           rate: herbsProductData.rate,
                           totalRate: herbsProductData.totalRate,
-                           category: herbsProductData.category,
+                          category: herbsProductData.category,
                         ),
                       ),
                     );
@@ -110,7 +109,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('Burger',style: TextStyle(fontSize: 20)),
+              Text('Burger', style: TextStyle(fontSize: 20)),
               GestureDetector(
                 onTap: () {
                   Navigator.of(context).push(
@@ -121,13 +120,12 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   );
                 },
-                 child: Container(
-                  margin:EdgeInsets.only(right:10), 
-                  padding:EdgeInsets.symmetric(vertical: 7,horizontal: 10),
+                child: Container(
+                  margin: EdgeInsets.only(right: 10),
+                  padding: EdgeInsets.symmetric(vertical: 7, horizontal: 10),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10), 
-                    color:primaryColor, 
-
+                    borderRadius: BorderRadius.circular(10),
+                    color: primaryColor,
                   ),
                   child: Text(
                     'View all',
@@ -154,7 +152,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           productPrice: freshProductData.productPrice,
                           rate: freshProductData.rate,
                           totalRate: freshProductData.totalRate,
-                           category: freshProductData.category,
+                          category: freshProductData.category,
                         ),
                       ),
                     );
@@ -166,7 +164,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   productUnit: freshProductData,
                   rate: freshProductData.rate,
                   totalRate: freshProductData.totalRate,
-                   category: freshProductData.category,
+                  category: freshProductData.category,
                 );
               },
             ).toList(),
@@ -185,7 +183,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('Pizza',style: TextStyle(fontSize: 20)),
+              Text('Pizza', style: TextStyle(fontSize: 20)),
               GestureDetector(
                 onTap: () {
                   Navigator.of(context).push(
@@ -196,13 +194,12 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   );
                 },
-                 child: Container(
-                  margin:EdgeInsets.only(right:10), 
-                  padding:EdgeInsets.symmetric(vertical: 7,horizontal: 10),
+                child: Container(
+                  margin: EdgeInsets.only(right: 10),
+                  padding: EdgeInsets.symmetric(vertical: 7, horizontal: 10),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10), 
-                    color:primaryColor, 
-
+                    borderRadius: BorderRadius.circular(10),
+                    color: primaryColor,
                   ),
                   child: Text(
                     'View all',
@@ -241,7 +238,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   productUnit: rootProductData,
                   rate: rootProductData.rate,
                   totalRate: rootProductData.totalRate,
-                   category: rootProductData.category,
+                  category: rootProductData.category,
                 );
               },
             ).toList(),
@@ -323,19 +320,17 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.only(top: 10,bottom: 10, left: 10),
+        padding: const EdgeInsets.only(top: 10, bottom: 10, left: 10),
         child: ListView(
           children: [
             Container(
-              margin:EdgeInsets.only(right:10), 
+              margin: EdgeInsets.only(right: 10),
               height: 150,
               decoration: BoxDecoration(
                 image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: AssetImage(
-                      'assets/cover.jpg'),
+                  image: AssetImage('assets/cover.jpg'),
                 ),
-
                 borderRadius: BorderRadius.circular(10),
               ),
             ),

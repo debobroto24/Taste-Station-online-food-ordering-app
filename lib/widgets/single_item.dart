@@ -9,14 +9,18 @@ class SingleItem extends StatefulWidget {
   bool isBool = false;
   String productImage;
   String productName;
+  bool isSearch = false;
   bool wishList = false;
   int productPrice;
   String productId;
   int productQuantity;
   Function onDelete;
+  Function searchVeiw;
   var productUnit;
   SingleItem(
-      {this.productQuantity,
+      {this.searchVeiw,
+      this.isSearch,
+      this.productQuantity,
       this.productId,
       this.productUnit,
       this.onDelete,
@@ -42,7 +46,7 @@ class _SingleItemState extends State<SingleItem> {
 
   @override
   Widget build(BuildContext context) {
-    int a = 0; 
+    int a = 0;
     getCount();
     reviewCartProvider = Provider.of<ReviewCartProvider>(context);
     reviewCartProvider.getReviewCartData();
@@ -52,7 +56,7 @@ class _SingleItemState extends State<SingleItem> {
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
           child: Row(
             children: [
-              // image 
+              // image
               Expanded(
                 // child: Container(
                 //   width:100,
@@ -61,26 +65,24 @@ class _SingleItemState extends State<SingleItem> {
                 //     child: Image.network(
                 //       widget.productImage,
                 //       fit:BoxFit.cover,
-                //       height: 90 , 
-                //       width:100, 
+                //       height: 90 ,
+                //       width:100,
                 //     ),
                 //   ),
                 // ),
 
-
-            child: CircleAvatar(
-              radius: 45,
-              backgroundColor: primaryColor,
-              child: CircleAvatar(
-                  backgroundImage: NetworkImage(
-                   widget.productImage,
-                  ),
-                  radius: 43,
-                  backgroundColor: scaffoldBackgroundColor),
-            ),
-          
+                child: CircleAvatar(
+                  radius: 45,
+                  backgroundColor: primaryColor,
+                  child: CircleAvatar(
+                      backgroundImage: NetworkImage(
+                        widget.productImage,
+                      ),
+                      radius: 43,
+                      backgroundColor: scaffoldBackgroundColor),
+                ),
               ),
-              // name and price 
+              // name and price
               Expanded(
                 child: Container(
                   height: 90,
@@ -103,7 +105,6 @@ class _SingleItemState extends State<SingleItem> {
                           ),
                           Text(
                             "${widget.productPrice} ৳" ?? " ",
-                            
                             style: TextStyle(
                                 color: textColor2, fontWeight: FontWeight.bold),
                           ),
@@ -141,39 +142,39 @@ class _SingleItemState extends State<SingleItem> {
                       //               });
                       //         },
 
-                              // gram unit hide  
-                              // child: Container(
-                              //   margin: EdgeInsets.only(right: 15),
-                              //   padding: EdgeInsets.symmetric(horizontal: 10),
-                              //   height: 35,
-                              //   decoration: BoxDecoration(
-                              //     border: Border.all(color: Colors.grey),
-                              //     borderRadius: BorderRadius.circular(30),
-                              //   ),
-                              //   child: Row(
-                              //     children: [
-                              //       Expanded(
-                              //         child: Text(
-                              //          "50 Gram",
-                              //           style: TextStyle(
-                              //             color: Colors.grey,
-                              //             fontSize: 14,
-                              //           ),
-                              //         ),
-                              //       ),
-                              //       Center(
-                              //         child: Icon(
-                              //           Icons.arrow_drop_down,
-                              //           size: 20,
-                              //           color: primaryColor,
-                              //         ),
-                              //       )
-                              //     ],
-                              //   ),
-                              // ),
-                            
-                          //   )
-                          // : Text(widget.productUnit ??  '')
+                      // gram unit hide
+                      // child: Container(
+                      //   margin: EdgeInsets.only(right: 15),
+                      //   padding: EdgeInsets.symmetric(horizontal: 10),
+                      //   height: 35,
+                      //   decoration: BoxDecoration(
+                      //     border: Border.all(color: Colors.grey),
+                      //     borderRadius: BorderRadius.circular(30),
+                      //   ),
+                      //   child: Row(
+                      //     children: [
+                      //       Expanded(
+                      //         child: Text(
+                      //          "50 Gram",
+                      //           style: TextStyle(
+                      //             color: Colors.grey,
+                      //             fontSize: 14,
+                      //           ),
+                      //         ),
+                      //       ),
+                      //       Center(
+                      //         child: Icon(
+                      //           Icons.arrow_drop_down,
+                      //           size: 20,
+                      //           color: primaryColor,
+                      //         ),
+                      //       )
+                      //     ],
+                      //   ),
+                      // ),
+
+                      //   )
+                      // : Text(widget.productUnit ??  '')
                     ],
                   ),
                 ),
@@ -197,14 +198,34 @@ class _SingleItemState extends State<SingleItem> {
                             children: [
                               InkWell(
                                 onTap: widget.onDelete,
-                                child: Padding (
-                                  padding:EdgeInsets.only(top: 15), 
-                                  child: Icon(
-                                    Icons.delete,
-                                    size: 30,
-                                    color: Colors.deepOrangeAccent,
-                                  ),
-                                ),
+                                child: widget.isSearch == true
+                                    ? InkWell(
+                                        onTap: widget.searchVeiw,
+                                        child: Container(
+                                          margin: EdgeInsets.only(top: 10),
+                                          padding: EdgeInsets.symmetric(
+                                              vertical: 5, horizontal: 7),
+                                          decoration: BoxDecoration(
+                                            color: primaryColor,
+                                            borderRadius:
+                                                BorderRadius.circular(5),
+                                          ),
+                                          alignment: Alignment.center,
+                                          child: Text(
+                                            "View Me",
+                                            style: TextStyle(
+                                                fontSize: 14, color: textColor),
+                                          ),
+                                        ),
+                                      )
+                                    : Padding(
+                                        padding: EdgeInsets.only(top: 15),
+                                        child: Icon(
+                                          Icons.delete,
+                                          size: 30,
+                                          color: Colors.deepOrangeAccent,
+                                        ),
+                                      ),
                               ),
                               SizedBox(
                                 height: 5,
@@ -214,7 +235,7 @@ class _SingleItemState extends State<SingleItem> {
                                       height: 25,
                                       width: 70,
                                       decoration: BoxDecoration(
-                                        border: Border.all(color: Colors.grey),
+                                        border: Border.all(color: primaryColor),
                                         borderRadius: BorderRadius.circular(30),
                                       ),
                                       child: Center(
@@ -228,7 +249,6 @@ class _SingleItemState extends State<SingleItem> {
                                                   Fluttertoast.showToast(
                                                     msg:
                                                         "You reach minimum limit",
-                                                
                                                   );
                                                 } else {
                                                   setState(() {
@@ -254,7 +274,7 @@ class _SingleItemState extends State<SingleItem> {
                                               ),
                                             ),
                                             Text(
-                                              "$count" ??  '',
+                                              "$count" ?? '',
                                               style: TextStyle(
                                                 color: primaryColor,
                                               ),

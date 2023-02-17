@@ -63,7 +63,7 @@ class MyApp extends StatelessWidget {
           create: (context) => CheckoutProvider(),
         ),
         ChangeNotifierProvider<ProductOrderProvider>(
-            create: (context) => ProductOrderProvider()), 
+            create: (context) => ProductOrderProvider()),
       ],
       child: MaterialApp(
         theme: ThemeData(

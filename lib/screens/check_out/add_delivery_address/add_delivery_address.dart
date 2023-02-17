@@ -16,13 +16,21 @@ enum AddressTypes {
   Other,
 }
 
+enum AddressTypesZilla {
+  None,
+  Dhaka,
+  Sylhet,
+}
+
 class _AddDeliverAddressState extends State<AddDeliverAddress> {
   var myType = AddressTypes.Home;
+  var myType2 = AddressTypesZilla.Sylhet;
   @override
   Widget build(BuildContext context) {
     CheckoutProvider checkoutProvider = Provider.of(context);
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: primaryColor,
         title: Text(
           "Add Delivery Address",
           style: TextStyle(fontSize: 18),
@@ -59,49 +67,86 @@ class _AddDeliverAddressState extends State<AddDeliverAddress> {
         ),
         child: ListView(
           children: [
-            CostomTextField(
-              labText: "First name",
-              controller: checkoutProvider.firstName,
-            ),
-            CostomTextField(
-              labText: "Last name",
-              controller: checkoutProvider.lastName,
-            ),
+            // CostomTextField(
+            //   labText: "First name",
+            //   controller: checkoutProvider.firstName,
+            // ),
+            // CostomTextField(
+            //   labText: "Last name",
+            //   controller: checkoutProvider.lastName,
+            // ),
             CostomTextField(
               labText: "Mobile No",
               controller: checkoutProvider.mobileNo,
             ),
-            CostomTextField(
-              labText: "Alternate Mobile No",
-              controller: checkoutProvider.alternateMobileNo,
-            ),
-            CostomTextField(
-              labText: "Scoiety",
-              controller: checkoutProvider.scoiety,
-            ),
+            // CostomTextField(
+            //   labText: "Alternate Mobile No",
+            //   controller: checkoutProvider.alternateMobileNo,
+            // ),
+            // CostomTextField(
+            //   labText: "Scoiety",
+            //   controller: checkoutProvider.scoiety,
+            // ),
             CostomTextField(
               labText: "Street",
               controller: checkoutProvider.street,
             ),
-            CostomTextField(
-              labText: "Landmark",
-              controller: checkoutProvider.landmark,
-            ),
+            // CostomTextField(
+            //   labText: myType2 == AddressTypesZilla.Sylhet ? "Sylhet" : "Dhaka",
+            //   controller: checkoutProvider.landmark,
+            // ),
             CostomTextField(
               labText: "City",
               controller: checkoutProvider.city,
             ),
             CostomTextField(
-              labText: "Aera",
+              // area
+              labText: "House number",
               controller: checkoutProvider.aera,
             ),
-            CostomTextField(
-              labText: "Pincode",
-              controller: checkoutProvider.pincode,
+            ListTile(
+              title: Text("Select District"),
             ),
+            RadioListTile(
+              activeColor: primaryColor,
+              value: AddressTypesZilla.Dhaka,
+              groupValue: myType2,
+              title: Text("Dhaka"),
+              onChanged: (AddressTypesZilla value) {
+                setState(() {
+                  myType2 = value;
+                });
+              },
+              // secondary: Icon(
+              //   Icons.home,
+              //   color: primaryColor,
+              // ),
+            ),
+            RadioListTile(
+              activeColor: primaryColor,
+              value: AddressTypesZilla.Sylhet,
+              groupValue: myType2,
+              title: Text("Sylhet"),
+              onChanged: (AddressTypesZilla value) {
+                setState(() {
+                  myType2 = value;
+                });
+              },
+              // secondary: Icon(
+              //   Icons.work,
+              //   color: primaryColor,
+              // ),
+            ),
+            Divider(
+              color: Colors.black,
+            ),
+            // CostomTextField(
+            //   labText: "Pincode",
+            //   controller: checkoutProvider.pincode,
+            // ),
             InkWell(
               onTap: () {
-               Navigator.of(context).push(
+                Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) => CostomGoogleMap(),
                   ),
@@ -114,8 +159,9 @@ class _AddDeliverAddressState extends State<AddDeliverAddress> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    checkoutProvider.setLoaction == null? Text("Set Loaction"):
-                    Text("Done!"),
+                    checkoutProvider.setLoaction == null
+                        ? Text("Set Loaction")
+                        : Text("Done!"),
                   ],
                 ),
               ),
@@ -127,6 +173,7 @@ class _AddDeliverAddressState extends State<AddDeliverAddress> {
               title: Text("Address Type*"),
             ),
             RadioListTile(
+              activeColor: primaryColor,
               value: AddressTypes.Home,
               groupValue: myType,
               title: Text("Home"),
@@ -141,6 +188,7 @@ class _AddDeliverAddressState extends State<AddDeliverAddress> {
               ),
             ),
             RadioListTile(
+              activeColor: primaryColor,
               value: AddressTypes.Work,
               groupValue: myType,
               title: Text("Work"),
@@ -155,6 +203,7 @@ class _AddDeliverAddressState extends State<AddDeliverAddress> {
               ),
             ),
             RadioListTile(
+              activeColor: primaryColor,
               value: AddressTypes.Other,
               groupValue: myType,
               title: Text("Other"),

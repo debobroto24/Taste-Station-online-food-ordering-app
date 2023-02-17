@@ -12,8 +12,8 @@ class Count extends StatefulWidget {
   String productId;
   int productPrice;
   var productUnit;
-  String category; 
-  // String category; 
+  String category;
+  // String category;
 
   Count({
     this.productName,
@@ -21,7 +21,7 @@ class Count extends StatefulWidget {
     this.productId,
     this.productImage,
     this.productPrice,
-    this.category, 
+    this.category,
   });
   @override
   _CountState createState() => _CountState();
@@ -57,20 +57,21 @@ class _CountState extends State<Count> {
   @override
   Widget build(BuildContext context) {
     getAddAndQuantity();
-        //  print("check in count :category is : ${widget.category}"); 
+    //  print("check in count :category is : ${widget.category}");
 
     ReviewCartProvider reviewCartProvider = Provider.of(context);
     return Container(
-      height: 25,
-      width: 100,
+      height: 40,
+      width: 120,
       // width: double.infinity,
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey),
+        border: Border.all(color: primaryColor),
         borderRadius: BorderRadius.circular(8),
       ),
       child: isTrue == true
+          // product overview design
           ? Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 InkWell(
                   onTap: () {
@@ -89,14 +90,26 @@ class _CountState extends State<Count> {
                         cartName: widget.productName,
                         cartPrice: widget.productPrice,
                         cartQuantity: count,
-                        category: widget.category, 
+                        category: widget.category,
                       );
                     }
                   },
-                  child: Icon(
-                    Icons.remove,
-                    size: 20,
-                    color: Color(0xffd0b84c),
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 8),
+                    // height: 25,
+                    //  width: 20,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                        color: primaryColor,
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(8),
+                          bottomLeft: Radius.circular(8),
+                        )),
+                    child: Icon(
+                      Icons.remove,
+                      size: 20,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
                 Text(
@@ -118,36 +131,60 @@ class _CountState extends State<Count> {
                       cartName: widget.productName,
                       cartPrice: widget.productPrice,
                       cartQuantity: count,
-                       category: widget.category, 
+                      category: widget.category,
                     );
                   },
-                  child: Icon(
-                    Icons.add,
-                    size: 20,
-                    color: Color(0xffd0b84c),
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 8),
+                    // height: 25,
+                    //  width: 20,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                        color: primaryColor,
+                        borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(8),
+                          bottomRight: Radius.circular(8),
+                        )),
+                    child: Icon(
+                      Icons.add,
+                      size: 20,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ],
             )
-          : Center(
-              child: InkWell(
-                onTap: () {
-                  setState(() {
-                    isTrue = true;
-                  });
-                  reviewCartProvider.addReviewCartData(
-                    cartId: widget.productId,
-                    cartImage: widget.productImage,
-                    cartName: widget.productName,
-                    cartPrice: widget.productPrice,
-                    cartQuantity: count,
-                    cartUnit: widget.productUnit,
-                     category: widget.category, 
-                  );
-                },
-                child: Text(
-                  "ADD",
-                  style: TextStyle(color: primaryColor),
+          : InkWell(
+              onTap: () {
+                setState(() {
+                  isTrue = true;
+                });
+                reviewCartProvider.addReviewCartData(
+                  cartId: widget.productId,
+                  cartImage: widget.productImage,
+                  cartName: widget.productName,
+                  cartPrice: widget.productPrice,
+                  cartQuantity: count,
+                  cartUnit: widget.productUnit,
+                  category: widget.category,
+                );
+              },
+              child: Container(
+                height: 40,
+                width: 120,
+
+                // width: double.infinity,
+                // decoration: BoxDecoration(
+                //   border: Border.all(color: Colors.grey),
+                //   borderRadius: BorderRadius.circular(8),
+                // ),
+                child: Center(
+                  // review vart design
+
+                  child: Text(
+                    "ADD",
+                    style: TextStyle(color: primaryColor),
+                  ),
                 ),
               ),
             ),

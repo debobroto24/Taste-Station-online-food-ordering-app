@@ -28,7 +28,7 @@ class ReviewCart extends StatelessWidget {
     // set up the AlertDialog
     AlertDialog alert = AlertDialog(
       title: Text("Cart Product"),
-      content: Text("Are you devete on cartProduct?"),
+      content: Text("Are you sure?"),
       actions: [
         cancelButton,
         continueButton,
@@ -60,7 +60,10 @@ class ReviewCart extends StatelessWidget {
         trailing: Container(
           width: 160,
           child: MaterialButton(
-            child: Text("Place Order", style: TextStyle(color:Colors.white),),
+            child: Text(
+              "Place Order",
+              style: TextStyle(color: Colors.white),
+            ),
             color: primaryColor,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(
@@ -90,8 +93,36 @@ class ReviewCart extends StatelessWidget {
       body: reviewCartProvider.getIsLoading
           ? Center(child: CircularProgressIndicator())
           : reviewCartProvider.getReviewCartDataList.isEmpty
-              ? Center(
-                  child: Text("You didn't select any product"),
+              ? Align(
+                  alignment: Alignment.center,
+                  child: Container(
+                    padding: EdgeInsets.only(top: 40),
+                    alignment: Alignment.center,
+                    // width:MediaQuery.of(context).size.width
+                    child: Column(
+                      children: [
+                        Container(
+                          width: double.infinity,
+                          height: 400,
+                          padding: EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 15),
+                          child: Image.asset(
+                            'assets/empty_cart.gif',
+                            width: 200,
+                            height: 200,
+                            scale: .2,
+                          ),
+                        ),
+                        Text(
+                          "Opps! Your cart is empty",
+                          style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: primaryColor),
+                        ),
+                      ],
+                    ),
+                  ),
                 )
               : ListView.builder(
                   itemCount: reviewCartProvider.getReviewCartDataList.length,

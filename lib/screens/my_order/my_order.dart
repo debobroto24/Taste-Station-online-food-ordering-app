@@ -22,43 +22,8 @@ class _MyOrderState extends State<MyOrder> {
   ReviewCartProvider reviewCartProvider;
 
   ProductOrderProvider productOrderProvider;
+
   // productOrderProvider.fetchOrderList();
-
-  // showAlertDialog(BuildContext context, ReviewCartModel delete) {
-  //   // set up the buttons
-  //   Widget cancelButton = TextButton(
-  //     child: Text("No"),
-  //     onPressed: () {
-  //       Navigator.of(context).pop();
-  //     },
-  //   );
-  //   Widget continueButton = TextButton(
-  //     child: Text("Yes"),
-  //     onPressed: () {
-  //       reviewCartProvider.reviewCartDataDelete(delete.cartId);
-  //       Navigator.of(context).pop();
-  //     },
-  //   );
-
-  //   // set up the AlertDialog
-  //   AlertDialog alert = AlertDialog(
-  //     title: Text("Cart Product"),
-  //     content: Text("Are you devete on cartProduct?"),
-  //     actions: [
-  //       cancelButton,
-  //       continueButton,
-  //     ],
-  //   );
-
-  //   // show the dialog
-  //   showDialog(
-  //     context: context,
-  //     builder: (BuildContext context) {
-  //       return alert;
-  //     },
-  //   );
-  // }
-
   @override
   Widget build(BuildContext context) {
     //     ReviewCartProvider reviewCartProvider;
@@ -92,147 +57,140 @@ class _MyOrderState extends State<MyOrder> {
         ],
       ),
       body: Container(
-        margin: EdgeInsets.only(top: 15),
-        height: double.infinity,
-        width: double.infinity,
-        child: productOrderProvider.getIsLoading
-            ?Center(
-                child: CircularProgressIndicator(),
-              ): data.isEmpty
-                ? Center(
-                    child: Text('you dont have any order'),
-                  )
-                : 
-                Container(
-                    height: double.infinity,
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.vertical,
-                      child: Column(
-                        children: data.entries.map((e) {
-                          return Container(
-                            margin: EdgeInsets.only(
-                                left: 10, right: 10, bottom: 20),
-                            height: 155,
-                            child: Column(
-                              children: [
-                                // date section
-                                Container(
-                                  margin: EdgeInsets.only(top: 5,bottom: 5),
-                                  alignment: Alignment.topLeft,
-                                  decoration: BoxDecoration(
-                                    border: Border(
-                                      bottom: BorderSide(
-                                          width: 1.0, color: primaryColor),
-                                    ),
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsets.only(bottom: 5),
-                                    child: Text(
-                                      e.key ?? ' ',
-                                      // e.value.first.dateTime.toString() ?? ' ', this is real date time from data base
-                                      style: TextStyle(
-                                        fontSize: 18,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  alignment: Alignment.centerLeft,
-                                ),
-                                SizedBox(height: 2),
-                                // image section
-                                Container(
-                                  // padding:EdgeInsets.only(top:8,bottom:8),
-                                  width: double.infinity,
+          margin: EdgeInsets.only(top: 15),
+          height: double.infinity,
+          width: double.infinity,
+          // child: productOrderProvider.getIsLoading
+          //     ? Center(
+          //         child: CircularProgressIndicator(),
+          //       )
 
+          // : data.isEmpty
+          //   ? Center(
+          //       child: Text('you dont have any order'),
+          //     )
+          child: Container(
+            height: double.infinity,
+            child: SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: Column(
+                children: data.entries.map((e) {
+                  return Container(
+                    margin: EdgeInsets.only(left: 10, right: 10, bottom: 20),
+                    height: 155,
+                    child: Column(
+                      children: [
+                        // date section
+                        Container(
+                          margin: EdgeInsets.only(top: 5, bottom: 5),
+                          alignment: Alignment.topLeft,
+                          decoration: BoxDecoration(
+                            border: Border(
+                              bottom:
+                                  BorderSide(width: 1.0, color: primaryColor),
+                            ),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.only(bottom: 5),
+                            child: Text(
+                              e.key ?? ' ',
+                              // e.value.first.dateTime.toString() ?? ' ', this is real date time from data base
+                              style: TextStyle(
+                                fontSize: 18,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          alignment: Alignment.centerLeft,
+                        ),
+                        SizedBox(height: 2),
+                        // image section
+                        Container(
+                          // padding:EdgeInsets.only(top:8,bottom:8),
+                          width: double.infinity,
+
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Container(
                                   child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Container(
-                                          child: Row(
-                                        children: [
-                                          Container(
-                                            margin: EdgeInsets.only(right: 8),
-                                            // image
-                                            child: CircleAvatar(
-                                              radius: 45,
-                                              backgroundColor: primaryColor,
-                                              child: CircleAvatar(
-                                                  backgroundImage: NetworkImage(
-                                                    e.value.first.cartImage.toString(),
-                                                  ),
-                                                  radius: 43,
-                                                  backgroundColor:
-                                                      scaffoldBackgroundColor),
-                                            ),
+                                children: [
+                                  Container(
+                                    margin: EdgeInsets.only(right: 8),
+                                    // image
+                                    child: CircleAvatar(
+                                      radius: 45,
+                                      backgroundColor: primaryColor,
+                                      child: CircleAvatar(
+                                          backgroundImage: NetworkImage(
+                                            e.value.first.cartImage.toString(),
                                           ),
-                                          Text(
-                                            e.value.length > 1
-                                                ? "+${e.value.length - 1}"
-                                                : " ",
-                                            style: TextStyle(
-                                                fontSize: 30,
-                                                color: primaryColor),
-                                          )
-                                        ],
-                                      )),
-                                      //details and button
-                                      Container(
-                                        child: Column(
-                                          children: [
-                                            Text(
-                                                "Total  ${e.value.first.totalPrice.toString()}৳"),
-                                            SizedBox(width: 10),
-                                            // Text(
-                                            //     "total item ${totalProduct.toString()}"),
-                                            TextButton(
-                                              onPressed: () {
-                                                Navigator.of(context).pushNamed(
-                                                    '/orderdetails',
-                                                    arguments: data[e.key]);
-                                                // List<ProductModel> list = e.value.contains(e);
-                                                // print(data.entries.singleWhere((element) => element.key == e.key).value);
-                                                // List<ProductModel> list = data.entries.singleWhere((element) => element.key == e.key).value.;
-                                                //  List<ProductModel> ite =  data[e.key].whereType();
-                                                // print(e.value.toList());
-                                                // print(data[e.key].map((e) => e.cartName));
-                                                // List<OrderCartModel> or  = data[e.key];
-                                                // or.map((e) =>print( e.cartName));
-                                              },
-                                              child: Container(
-                                                padding: EdgeInsets.symmetric(
-                                                    horizontal: 10,
-                                                    vertical: 8),
-                                                decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(3),
-                                                  color: primaryColor,
-                                                ),
-                                                child: Text(
-                                                  "View Order",
-                                                  style: TextStyle(
-                                                      color: Colors.white),
-                                                ),
-                                              ),
-                                            )
-                                          ],
+                                          radius: 43,
+                                          backgroundColor:
+                                              scaffoldBackgroundColor),
+                                    ),
+                                  ),
+                                  Text(
+                                    e.value.length > 1
+                                        ? "+${e.value.length - 1}"
+                                        : " ",
+                                    style: TextStyle(
+                                        fontSize: 30, color: primaryColor),
+                                  )
+                                ],
+                              )),
+                              //details and button
+                              Container(
+                                child: Column(
+                                  children: [
+                                    Text(
+                                        "Total  ${e.value.first.totalPrice.toString()}৳"),
+                                    SizedBox(width: 10),
+                                    // Text(
+                                    //     "total item ${totalProduct.toString()}"),
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.of(context).pushNamed(
+                                            '/orderdetails',
+                                            arguments: data[e.key]);
+                                        // List<ProductModel> list = e.value.contains(e);
+                                        // print(data.entries.singleWhere((element) => element.key == e.key).value);
+                                        // List<ProductModel> list = data.entries.singleWhere((element) => element.key == e.key).value.;
+                                        //  List<ProductModel> ite =  data[e.key].whereType();
+                                        // print(e.value.toList());
+                                        // print(data[e.key].map((e) => e.cartName));
+                                        // List<OrderCartModel> or  = data[e.key];
+                                        // or.map((e) =>print( e.cartName));
+                                      },
+                                      child: Container(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 10, vertical: 8),
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(3),
+                                          color: primaryColor,
+                                        ),
+                                        child: Text(
+                                          "View Order",
+                                          style: TextStyle(color: Colors.white),
                                         ),
                                       ),
-                                    ],
-                                  ),
+                                    )
+                                  ],
                                 ),
-                                SizedBox(height: 5),
-                              ],
-                            ),
-                          );
-                        }).toList(),
-                      ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: 5),
+                      ],
                     ),
-                  )
-            
-            
-      ),
+                  );
+                }).toList(),
+              ),
+            ),
+          )),
     );
   }
 }

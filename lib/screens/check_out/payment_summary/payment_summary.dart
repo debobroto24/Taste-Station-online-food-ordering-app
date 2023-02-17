@@ -118,7 +118,11 @@ class _PaymentSummaryState extends State<PaymentSummary> {
 
                 await Future.delayed(Duration(seconds: 4), () {});
                 // Navigator.of(context).pushNamed("/paymentsuccessful");
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>PaymentSuccessful(isCashOn:true)));
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            PaymentSuccessful(isCashOn: true)));
               } else {
                 Fluttertoast.showToast(
                   msg: "Please select payment option!",
@@ -154,10 +158,12 @@ class _PaymentSummaryState extends State<PaymentSummary> {
             return Column(
               children: [
                 SingleDeliveryItem(
+                  // address:
+                  //     "aera, ${widget.deliverAddressList.aera}, street, ${widget.deliverAddressList.street}, society ${widget.deliverAddressList.scoirty}, pincode ${widget.deliverAddressList.pinCode}",
+
                   address:
-                      "aera, ${widget.deliverAddressList.aera}, street, ${widget.deliverAddressList.street}, society ${widget.deliverAddressList.scoirty}, pincode ${widget.deliverAddressList.pinCode}",
-                  title:
-                      "${widget.deliverAddressList.firstName} ${widget.deliverAddressList.lastName}",
+                      "hourse number, ${widget.deliverAddressList.aera}, street, ${widget.deliverAddressList.street}",
+                  title: " ",
                   number: widget.deliverAddressList.mobileNo,
                   addressType: widget.deliverAddressList.addressType ==
                           "AddressTypes.Home"
