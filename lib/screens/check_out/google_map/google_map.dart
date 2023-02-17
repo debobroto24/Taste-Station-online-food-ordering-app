@@ -42,6 +42,7 @@ class _GoogleMapState extends State<CostomGoogleMap> {
                   target: _initialcameraposition,
                 ),
                 mapType: MapType.normal,
+                myLocationEnabled: true,
                 onMapCreated: _onMapCreated,
               ),
               Positioned(

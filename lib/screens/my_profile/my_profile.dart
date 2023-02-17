@@ -18,7 +18,8 @@ class MyProfile extends StatefulWidget {
 
 class _MyProfileState extends State<MyProfile> {
   @override
-  Widget listTile({IconData icon, String title, VoidCallback tap}) {
+  Widget listTile(
+      {IconData icon, String title, String data, VoidCallback tap}) {
     return Column(
       children: [
         Divider(
@@ -28,7 +29,8 @@ class _MyProfileState extends State<MyProfile> {
           onTap: tap,
           leading: Icon(icon),
           title: Text(title),
-          trailing: Icon(Icons.arrow_forward_ios),
+          // trailing: Icon(Icons.arrow_forward_ios),
+          trailing: Text(data),
         )
       ],
     );
@@ -62,7 +64,7 @@ class _MyProfileState extends State<MyProfile> {
               Container(
                 height: 591,
                 width: double.infinity,
-                padding: EdgeInsets.only(left: 15,right: 15, top: 10),
+                padding: EdgeInsets.only(left: 15, right: 15, top: 10),
                 decoration: BoxDecoration(
                   color: scaffoldBackgroundColor,
                   borderRadius: BorderRadius.only(
@@ -106,24 +108,33 @@ class _MyProfileState extends State<MyProfile> {
                         ),
                       ],
                     ),
+                    // listTile(
+                    //     icon: Icons.exit_to_app_outlined,
+                    //     title: "Log Out",
+                    //     tap: () async {
+                    //       print("logout is tapped");
+                    //       await GoogleSignIn().signOut();
+                    //       await fireabase.signOut();
+                    //       Navigator.push(context,
+                    //           MaterialPageRoute(builder: (context) {
+                    //         return SignIn();
+                    //       }));
+                    //     }),
                     listTile(
-                        icon: Icons.exit_to_app_outlined,
-                        title: "Log Out",
-                        tap: () async {
-                          print("logout is tapped");
-                          await GoogleSignIn().signOut();
-                          await fireabase.signOut();
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) {
-                            return SignIn();
-                          }));
-                        }),
+                        title: "Phone number",
+                        tap: () async {},
+                        data: "3423423423423"),
+                    listTile(
+                      icon: Icons.exit_to_app_outlined,
+                      title: "Address",
+                      tap: () async {},
+                      data: "shibgonj senpara",
+                    )
                   ],
                 ),
               ),
               Expanded(
                   child: Container(
-                    
                 color: Colors.white,
               ))
             ],
