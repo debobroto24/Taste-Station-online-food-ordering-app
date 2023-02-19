@@ -16,22 +16,22 @@ class SingleDeliveryItem extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(title),
-              Container(
-                width: 60,
-                padding: EdgeInsets.all(1),
-                height: 20,
-                decoration: BoxDecoration(
-                    color: primaryColor, borderRadius: BorderRadius.circular(10)),
-                child: Center(
-                  child: Text(
-                    addressType,
-                    style: TextStyle(
-                      fontSize: 13,
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
-              ),
+              // Container(
+              //   width: 60,
+              //   padding: EdgeInsets.all(1),
+              //   height: 20,
+              //   decoration: BoxDecoration(
+              //       color: primaryColor, borderRadius: BorderRadius.circular(10)),
+              //   child: Center(
+              //     child: Text(
+              //       addressType,
+              //       style: TextStyle(
+              //         fontSize: 13,
+              //         color: Colors.black,
+              //       ),
+              //     ),
+              //   ),
+              // ),
             ],
           ),
           leading: CircleAvatar(

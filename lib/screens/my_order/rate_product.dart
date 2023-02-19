@@ -51,7 +51,7 @@ class _RateProductState extends State<RateProduct> {
           .collection(dockey)
           .doc(productId)
           .set({'rate': rate, 'productId': productId}).then((value) {
-        print("user rate is set");
+        // print("user rate is set");
         setState(() {
           isExist = true;
           rateIs = rate;
@@ -71,7 +71,7 @@ class _RateProductState extends State<RateProduct> {
 
       collection.docs.forEach((e) {
         if (e.get('productId') == productId) {
-          print("hello");
+          // print("hello");
           rateNumber = e.get('rate');
           totalRate = e.get('totalRate');
         }
@@ -83,11 +83,11 @@ class _RateProductState extends State<RateProduct> {
       });
     } catch (e) {}
 
-    print('--------------');
+    // print('--------------');
   }
 
   Future<void> getUserRating(String productId, String docKey) async {
-    print("getUserRating called");
+    // print("getUserRating called");
     setState(() {
       bool rateExist = false;
     });
@@ -99,7 +99,7 @@ class _RateProductState extends State<RateProduct> {
         .collection(docKey)
         .doc(productId)
         .get();
-    print("rate exist is : ${rate.exists}");
+    // print("rate exist is : ${rate.exists}");
     if (rate.exists) {
       setState(() {
         isExist = true;

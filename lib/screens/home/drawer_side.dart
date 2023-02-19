@@ -139,7 +139,7 @@ class _DrawerSideState extends State<DrawerSide> {
                   iconData: Icons.exit_to_app_outlined,
                   title: "Log Out",
                   onTap: () async {
-                    print("logout is tapped");
+                    // print("logout is tapped");
                     await GoogleSignIn().signOut();
                     await fireabase.signOut();
                     Navigator.push(context,

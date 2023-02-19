@@ -40,7 +40,7 @@ class AllCards extends StatelessWidget {
                       children: cardlist.map((e) {
                     return GestureDetector(
                       onTap: () async {
-                        print("im tapped");
+                        // print("im tapped");
                         orderProvider.addOrder(e.accountType, e.cardNumber);
                         EasyLoading.showToast(
                           'Processing...',
@@ -100,7 +100,7 @@ class AllCards extends StatelessWidget {
                       }else if(accountType == "stripe"){
                         image =  "assets/stripe.png";
                       }
-                      print("im tapped");
+                      // print("im tapped");
                       Navigator.of(context).pushNamed("/addcard",
                           arguments: AddCardArgument(
                               image: image,

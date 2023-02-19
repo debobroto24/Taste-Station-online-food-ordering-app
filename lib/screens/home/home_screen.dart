@@ -62,8 +62,8 @@ class _HomeScreenState extends State<HomeScreen> {
               (herbsProductData) {
                 return SingalProduct(
                   onTap: () {
-                    print(
-                        "check category in home page: ${herbsProductData.category}");
+                    // print(
+                    //     "check category in home page: ${herbsProductData.category}");
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (context) => ProductOverview(

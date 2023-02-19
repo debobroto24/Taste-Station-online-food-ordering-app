@@ -15,18 +15,18 @@ class OrderItem extends StatelessWidget {
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
-            e.cartName,
-            style: TextStyle(
-              color: Colors.grey[600],
+          Container(
+            width:150,
+           
+            child: Text(
+              e.cartName,
+              style: TextStyle(
+                color: Colors.grey[600],
+              ),
+              overflow: TextOverflow.ellipsis,
             ),
           ),
-          Text(
-            e.cartUnit,
-            style: TextStyle(
-              color: Colors.grey[600],
-            ),
-          ),
+        
           Text(
             "${e.cartPrice} ৳",
           ),

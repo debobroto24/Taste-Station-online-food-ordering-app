@@ -162,7 +162,7 @@ class _PaymentSummaryState extends State<PaymentSummary> {
                   //     "aera, ${widget.deliverAddressList.aera}, street, ${widget.deliverAddressList.street}, society ${widget.deliverAddressList.scoirty}, pincode ${widget.deliverAddressList.pinCode}",
 
                   address:
-                      "hourse number, ${widget.deliverAddressList.aera}, street, ${widget.deliverAddressList.street}",
+                      "${widget.deliverAddressList.district}, ${widget.deliverAddressList.city}, ${widget.deliverAddressList.area}, ${widget.deliverAddressList.street}}",
                   title: " ",
                   number: widget.deliverAddressList.mobileNo,
                   addressType: widget.deliverAddressList.addressType ==
@@ -248,18 +248,18 @@ class _PaymentSummaryState extends State<PaymentSummary> {
                   },
                 ),
                 SizedBox(height: 15),
-                RadioListTile(
-                  activeColor: Colors.deepOrange,
-                  value: AddressTypes.Stripe,
-                  groupValue: myType,
-                  title: PaymentBox(
-                      paymentOption: "Stripe", image: "assets/stripe.png"),
-                  onChanged: (AddressTypes value) {
-                    setState(() {
-                      myType = value;
-                    });
-                  },
-                ),
+                // RadioListTile(
+                //   activeColor: Colors.deepOrange,
+                //   value: AddressTypes.Stripe,
+                //   groupValue: myType,
+                //   title: PaymentBox(
+                //       paymentOption: "Stripe", image: "assets/stripe.png"),
+                //   onChanged: (AddressTypes value) {
+                //     setState(() {
+                //       myType = value;
+                //     });
+                //   },
+                // ),
                 SizedBox(height: 15),
                 RadioListTile(
                   activeColor: Colors.deepOrange,

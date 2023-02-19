@@ -265,7 +265,7 @@ class ProductOrderProvider with ChangeNotifier {
   List<CardModel> cardList = [];
   List<CardModel> get getCardList => cardList;
   bool isCardLoaded = false;
-  Future<void> getAllCard(cardtype) async {
+  Future<void> getAllCard(String cardtype) async {
     cardList = [];
     try {
       cardList = [];
