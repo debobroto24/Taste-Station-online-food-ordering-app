@@ -87,7 +87,7 @@ class _AddCardState extends State<AddCard> {
           // dateInput.text.toString(), widget.accountType.toString());
       await orderProvider.getAllCard(widget.accountType);
       List<CardModel> cardlist = await orderProvider.getCardList;
-      Navigator.of(context).pushNamed(
+      Navigator.of(context).pushReplacementNamed(
         '/allcards',
         arguments: AllCardArgument(cardlist: cardlist, accountType: ''),
       );

@@ -34,7 +34,7 @@ enum AddressTypes {
   Home,
   OnlinePayment,
   Visa,
-  Stripe,
+  // Stripe,
   Cashon,
 }
 
@@ -82,20 +82,9 @@ class _PaymentSummaryState extends State<PaymentSummary> {
           child: MaterialButton(
             onPressed: () async {
               if (myType == AddressTypes.Visa) {
-                await orderProvider.getAllCard("visa");
-                List<CardModel> cardlist = await orderProvider.getCardList;
-                print("lengeth ${cardlist.length}");
-                // if (cardlist.length > 0) {
-                // await Navigator.of(context).pushNamed(
-                //   '/allcards',
-                //   arguments: cardlist,
-                // );
+                
+                      await orderProvider.getAllCard("visa");
 
-                Navigator.of(context).pushNamed("/allcards",
-                    arguments: AllCardArgument(
-                        cardlist: cardlist, accountType: "stripe"));
-              } else if (myType == AddressTypes.Stripe) {
-                await orderProvider.getAllCard("stripe");
                 List<CardModel> cardlist = await orderProvider.getCardList;
                 print("lengeth ${cardlist.length}");
                 // if (cardlist.length > 0) {
@@ -107,8 +96,24 @@ class _PaymentSummaryState extends State<PaymentSummary> {
                 Navigator.of(context).pushNamed("/allcards",
                     arguments: AllCardArgument(
                         cardlist: cardlist, accountType: "visa"));
-                //  print("visa");
-              } else if (myType == AddressTypes.Cashon) {
+              } 
+              // else if (myType == AddressTypes.Stripe) {
+              //   await orderProvider.getAllCard("stripe");
+              //   List<CardModel> cardlist = await orderProvider.getCardList;
+              //   print("lengeth ${cardlist.length}");
+              //   // if (cardlist.length > 0) {
+              //   // await Navigator.of(context).pushNamed(
+              //   //   '/allcards',
+              //   //   arguments: cardlist,
+              //   // );
+
+              //   Navigator.of(context).pushNamed("/allcards",
+              //       arguments: AllCardArgument(
+              //           cardlist: cardlist, accountType: "visa"));
+              //   //  print("visa");
+              // }
+              
+               else if (myType == AddressTypes.Cashon) {
                 orderProvider.addOrder("cashon", "no number");
                 EasyLoading.showToast(
                   'Processing...',

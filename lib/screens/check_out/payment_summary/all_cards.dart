@@ -13,7 +13,41 @@ class AllCards extends StatelessWidget {
   final List<CardModel> cardlist;
   final String accountType; 
   AllCards({Key key, this.cardlist , this.accountType}) : super(key: key);
+    showAlertDialog(BuildContext context, String cardId) {
+    // set up the buttons
+    Widget cancelButton = TextButton(
+      child: Text("No"),
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
+    );
+    Widget continueButton = TextButton(
+      child: Text("Yes"),
+      onPressed: () {
+        orderProvider.deleteCardData(cardId);
+        cardlist.removeWhere((element) => element.cardNumber == cardId);
+        Navigator.of(context).pop();
+      },
+    );
 
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("Visa Card"),
+      content: Text("Are you sure?"),
+      actions: [
+        cancelButton,
+        continueButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
   @override
   Widget build(BuildContext context) {
     orderProvider = Provider.of<ProductOrderProvider>(context);
@@ -38,21 +72,36 @@ class AllCards extends StatelessWidget {
                 children: [
                   Column(
                       children: cardlist.map((e) {
-                    return GestureDetector(
-                      onTap: () async {
-                        // print("im tapped");
-                        orderProvider.addOrder(e.accountType, e.cardNumber);
-                        EasyLoading.showToast(
-                          'Processing...',
-                          dismissOnTap: true,
-                          duration: Duration(seconds: 4),
-                        );
-
-                        await Future.delayed(Duration(seconds: 4), () {});
-                        Navigator.of(context).pushNamed("/paymentsuccessful",arguments: false);
-                      },
-                      child: Cards(
-                          cardnumber: e.cardNumber, image: "assets/visa.png"),
+                    return Container(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          GestureDetector(
+                            onTap: () async {
+                              // print("im tapped");
+                              orderProvider.addOrder(e.accountType, e.cardNumber);
+                              EasyLoading.showToast(
+                                'Processing...',
+                                dismissOnTap: true,
+                                duration: Duration(seconds: 4),
+                              );
+                    
+                              await Future.delayed(Duration(seconds: 4), () {});
+                              Navigator.of(context).pushNamed("/paymentsuccessful",arguments: false);
+                            },
+                            child: Cards(
+                                cardnumber: e.cardNumber, image: "assets/visa.png"),
+                          ),
+                           GestureDetector(
+                            onTap: () {
+                            showAlertDialog(context, e.cardNumber);
+                          },
+                             child: Container(
+                              padding:EdgeInsets.only(top:25)
+                              ,child: Icon(Icons.delete_sweep_rounded,size:35,color:primaryColor)),
+                           ), 
+                        ],
+                      ),
                     );
                   }).toList()),
                   SizedBox(height: 30),
@@ -95,16 +144,18 @@ class AllCards extends StatelessWidget {
                 child:   GestureDetector(
                     onTap: () {
                       String image; 
-                      if(accountType == "visa"){
-                        image = "assets/visa.png";
-                      }else if(accountType == "stripe"){
-                        image =  "assets/stripe.png";
-                      }
+                      // if(accountType == "visa"){
+                      //   image = "assets/visa.png";
+                      // }else if(accountType == "stripe"){
+                      //   image =  "assets/stripe.png";
+                      // }
+                      image = "assets/visa.png";
+
                       // print("im tapped");
                       Navigator.of(context).pushNamed("/addcard",
                           arguments: AddCardArgument(
                               image: image,
-                              accountType: accountType));
+                              accountType: "visa"));
                     },
                     child: Container(
                       // padding: EdgeInsets.symmetric(vertical: 15),

@@ -150,6 +150,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           productImage: freshProductData.productImage,
                           productName: freshProductData.productName,
                           productPrice: freshProductData.productPrice,
+                          productDescription:
+                              freshProductData.productDescription,
                           rate: freshProductData.rate,
                           totalRate: freshProductData.totalRate,
                           category: freshProductData.category,
@@ -222,6 +224,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         builder: (context) => ProductOverview(
                           productId: rootProductData.productId,
                           productImage: rootProductData.productImage,
+                          productDescription: rootProductData.productDescription,
                           productName: rootProductData.productName,
                           productPrice: rootProductData.productPrice,
                           rate: rootProductData.rate,

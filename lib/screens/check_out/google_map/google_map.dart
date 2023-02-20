@@ -72,7 +72,7 @@ class _GoogleMapState extends State<CostomGoogleMap> {
                         // Street   Country  Administrative area == stylhet Locality= city Sublocality = area
 
                         var first = addresses.first;
-                        // print("============******+++++++++");
+                        print("============******+++++++++");
                         // print("district : ${first.administrativeArea}");
                         // print("city : ${first.locality}");
                         // print("area : ${first.subLocality}");
@@ -81,10 +81,12 @@ class _GoogleMapState extends State<CostomGoogleMap> {
                            checkoutProvider.setLoaction = value;
                           checkoutProvider.districtFromMap.text =
                               first.administrativeArea.toString();
-                          checkoutProvider.cityFromMap.text =
-                              first.locality.toString();
+                          // checkoutProvider.cityFromMap.text =
+                          //     first.subLocality.toString();
+                          checkoutProvider.cityFromMap.text = "botesswar";
+                              
                           checkoutProvider.areaFromMap.text =
-                              first.subLocality.toString();
+                              first.name.toString();
                           checkoutProvider.streetFromMap.text =
                               first.street.toString();
                         // setState(() {
@@ -99,11 +101,11 @@ class _GoogleMapState extends State<CostomGoogleMap> {
                         //   checkoutProvider.streetFromMap.text =
                         //       first.street.toString();
 
-                        //   print("district : ${checkoutProvider.districtFromMap.text}");
-                        //   print("city : ${checkoutProvider.cityFromMap.text}");
-                        //   print("area : ${checkoutProvider.areaFromMap.text}");
-                        //   print("street : ${checkoutProvider.streetFromMap.text}");
-                        //   print("============******+++++++++");
+                          print("district : ${checkoutProvider.districtFromMap.text}");
+                          print("city : ${checkoutProvider.cityFromMap.text}");
+                          print("area : ${checkoutProvider.areaFromMap.text}");
+                          print("street : ${checkoutProvider.streetFromMap.text}");
+                          print("============******+++++++++");
                         // });
                       });
                       print("=======end========");

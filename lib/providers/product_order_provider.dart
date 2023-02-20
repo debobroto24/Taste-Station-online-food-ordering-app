@@ -265,6 +265,17 @@ class ProductOrderProvider with ChangeNotifier {
   List<CardModel> cardList = [];
   List<CardModel> get getCardList => cardList;
   bool isCardLoaded = false;
+
+ Future<void> deleteCardData(cardId){
+       FirebaseFirestore.instance
+        .collection("cardNumber")
+        .doc(FirebaseAuth.instance.currentUser.uid)
+        .collection("accounts")
+        .doc(cardId)
+        .delete();
+    notifyListeners();
+  }
+
   Future<void> getAllCard(String cardtype) async {
     cardList = [];
     try {
@@ -276,6 +287,9 @@ class ProductOrderProvider with ChangeNotifier {
           .collection("accounts")
           .where("accountType", isEqualTo: cardtype)
           .get();
+      // print(data); 
+      // print(cardtype);
+      // print(data.docs.length);
       data.docs.forEach((element) {
         CardModel cd = CardModel(
           accountType: element.get('accountType'),
@@ -288,6 +302,7 @@ class ProductOrderProvider with ChangeNotifier {
       // print(data.docs.length);
       // print("getallcard ${cardList.length}");
       //  print();
+       notifyListeners();
     } catch (e) {}
     notifyListeners();
   }
