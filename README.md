@@ -39,53 +39,53 @@ The database that will be used is the firebase. It will be used from the firebas
 ## Activity Diagram
 <img src="https://github.com/SaruarChy/Taste-Station-online-food-ordering-app/blob/master/screenshots/Activity%20Diagram.jpg" width="100%">
 <br>
+
 ## User Interfaces
+
+### Figure: Signup 
 <img src="https://github.com/SaruarChy/Taste-Station-online-food-ordering-app/blob/master/screenshots/signup.jpg" width="150">
-Figure: Signup 
-<br>
+
+### Figure: Home
 <img src="https://github.com/SaruarChy/Taste-Station-online-food-ordering-app/blob/master/screenshots/home.jpg" width="150">
-Figure: Home
-<br>
+
+### Figure: Sidebar
 <img src="https://github.com/SaruarChy/Taste-Station-online-food-ordering-app/blob/master/screenshots/sidebar.jpg" width="150">
-Figure: Sidebar
-<br>
+
+### Figure: Profile
 <img src="https://github.com/SaruarChy/Taste-Station-online-food-ordering-app/blob/master/screenshots/profile.jpg" width="150">
-Figure: Profile
-<br>
+
+### Figure: Cart
 <img src="https://github.com/SaruarChy/Taste-Station-online-food-ordering-app/blob/master/screenshots/cart.jpg" width="150">
-Figure: Cart
-<br>
+
+### Figure: Favourite
 <img src="https://github.com/SaruarChy/Taste-Station-online-food-ordering-app/blob/master/screenshots/favourite.jpg" width="150">
-Figure: Favourite
-<br>
+
+### Figure: Product Details
 <img src="https://github.com/SaruarChy/Taste-Station-online-food-ordering-app/blob/master/screenshots/product%20details.jpg" width="150">
-Figure: Product Details
-<br>
+
+### Figure: Select Payment method
 <img src="https://github.com/SaruarChy/Taste-Station-online-food-ordering-app/blob/master/screenshots/add%20payment%20opt.jpg" width="150">
-Figure: Select Payment method
-<br>
+
+### Figure: Add new card
 <img src="https://github.com/SaruarChy/Taste-Station-online-food-ordering-app/blob/master/screenshots/add%20card.jpg" width="150">
-Figure: Add new card
-<br>
+
+### Figure: Fill up info
 <img src="https://github.com/SaruarChy/Taste-Station-online-food-ordering-app/blob/master/screenshots/fill%20up%20info.jpg" width="150">
-Figure: Fill up info
-<br>
+
+### Figure: Select Card
 <img src="https://github.com/SaruarChy/Taste-Station-online-food-ordering-app/blob/master/screenshots/select%20card.jpg" width="150">
-Figure: Select Card
-<br>
+
+### Figure: Order Placed
 <img src="https://github.com/SaruarChy/Taste-Station-online-food-ordering-app/blob/master/screenshots/order%20placed.jpg" width="150">
-Figure: Order Placed
-<br>
+
+### Figure: My Order
 <img src="https://github.com/SaruarChy/Taste-Station-online-food-ordering-app/blob/master/screenshots/Order%20history.jpg" width="150">
-Figure: My Order
-<br>
+
+### Figure: Ordered Product
 <img src="https://github.com/SaruarChy/Taste-Station-online-food-ordering-app/blob/master/screenshots/ordered%20product.jpg" width="150">
-Figure: Ordered Product
-<br>
+
+### Figure: Leave feedback
 <img src="https://github.com/SaruarChy/Taste-Station-online-food-ordering-app/blob/master/screenshots/leave%20feedback.jpg" width="150">
-Figure: Leave feedback
-<br>
+
+### Figure: Rated
 <img src="https://github.com/SaruarChy/Taste-Station-online-food-ordering-app/blob/master/screenshots/rated.jpg" width="150">
-Figure: Rated
-<br>
-> ⬇️: **Download:** You can download whole project folder (zip) from [here](https://github.com/SaruarChy/Taste-Station-online-food-ordering-app/archive/refs/heads/master.zip).
