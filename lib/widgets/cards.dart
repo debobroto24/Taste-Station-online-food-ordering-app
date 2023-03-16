@@ -10,7 +10,7 @@ class Cards extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin:EdgeInsets.only(top:35), 
-      width: MediaQuery.of(context).size.width * 75,
+      width: MediaQuery.of(context).size.width * .75,
       height: 40,
               color: Colors.white10,
 
@@ -54,7 +54,7 @@ class Cards extends StatelessWidget {
           //   ),
           //   child:Text("delete")
           // ), 
-          Icon(Icons.delete_sweep_rounded,size:35,color:primaryColor), 
+          // Icon(Icons.delete_sweep_rounded,size:35,color:primaryColor), 
          
         ],
       ),

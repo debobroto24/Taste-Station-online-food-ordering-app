@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:food_app/config/colors.dart';
 import 'package:food_app/models/product_model.dart';
 import 'package:food_app/providers/review_cart_provider.dart';
@@ -122,17 +123,23 @@ class _CountState extends State<Count> {
                 ),
                 InkWell(
                   onTap: () {
-                    setState(() {
-                      count++;
-                    });
-                    reviewCartProvider.updateReviewCartData(
-                      cartId: widget.productId,
-                      cartImage: widget.productImage,
-                      cartName: widget.productName,
-                      cartPrice: widget.productPrice,
-                      cartQuantity: count,
-                      category: widget.category,
-                    );
+                    if (count >= 20) {
+                      Fluttertoast.showToast(
+                        msg: "You reach maximum limit",
+                      );
+                    } else {
+                      setState(() {
+                        count++;
+                      });
+                      reviewCartProvider.updateReviewCartData(
+                        cartId: widget.productId,
+                        cartImage: widget.productImage,
+                        cartName: widget.productName,
+                        cartPrice: widget.productPrice,
+                        cartQuantity: count,
+                        category: widget.category,
+                      );
+                    }
                   },
                   child: Container(
                     padding: EdgeInsets.symmetric(horizontal: 8),

@@ -9,51 +9,30 @@ import 'package:location/location.dart';
 class CheckoutProvider with ChangeNotifier {
   bool isloadding = false;
 
-  TextEditingController firstName = TextEditingController();
-  TextEditingController lastName = TextEditingController();
-  TextEditingController mobileNo = TextEditingController();
-  TextEditingController alternateMobileNo = TextEditingController();
-  TextEditingController scoiety = TextEditingController();
-  TextEditingController street = TextEditingController();
-  TextEditingController landmark = TextEditingController();
+  TextEditingController district = TextEditingController();
   TextEditingController city = TextEditingController();
-  TextEditingController aera = TextEditingController();
-  TextEditingController pincode = TextEditingController();
+  TextEditingController mobileNo = TextEditingController();
+  TextEditingController area = TextEditingController();
+  TextEditingController street = TextEditingController();
   LocationData setLoaction;
 
-  void validator(context, myType) async {
-    // if (firstName.text.isEmpty) {
-    //   Fluttertoast.showToast(msg: "firstname is empty");
-    // } else if (lastName.text.isEmpty) {
-    //   Fluttertoast.showToast(msg: "lastname is empty");
-    // } else
+  TextEditingController districtFromMap = TextEditingController();
+  TextEditingController cityFromMap = TextEditingController();
+  TextEditingController mobileNoFromMap = TextEditingController();
+  TextEditingController areaFromMap = TextEditingController();
+  TextEditingController streetFromMap = TextEditingController();
+
+  void validator(context, myTypeForType) async {
     if (mobileNo.text.isEmpty) {
       Fluttertoast.showToast(msg: "mobileNo is empty");
-    }
-    // else if (alternateMobileNo.text.isEmpty) {
-    //   Fluttertoast.showToast(msg: "alternateMobileNo is empty");
-    // }
-
-    //  else if (scoiety.text.isEmpty) {
-    //   Fluttertoast.showToast(msg: "scoiety is empty");
-    // }
-    else if (street.text.isEmpty) {
+    } else if (street.text.isEmpty) {
       Fluttertoast.showToast(msg: "street is empty");
-    }
-    // else if (landmark.text.isEmpty) {
-
-    //   Fluttertoast.showToast(msg: "landmark is empty");
-    // }
-    else if (city.text.isEmpty) {
+    } else if (city.text.isEmpty) {
       Fluttertoast.showToast(msg: "city is empty");
-    } else if (aera.text.isEmpty) {
+    } else if (area.text.isEmpty) {
       Fluttertoast.showToast(msg: "House number is empty");
-    }
-    // else if (pincode.text.isEmpty) {
-    //   Fluttertoast.showToast(msg: "pincode is empty");
-    // }
-    else if (setLoaction == null) {
-      Fluttertoast.showToast(msg: "setLoaction is empty");
+    } else if (district.text.isEmpty) {
+      Fluttertoast.showToast(msg: "District is empty");
     } else {
       isloadding = true;
       notifyListeners();
@@ -61,19 +40,47 @@ class CheckoutProvider with ChangeNotifier {
           .collection("AddDeliverAddress")
           .doc(FirebaseAuth.instance.currentUser.uid)
           .set({
-        "firstname": "firstname",
-        "lastname": "lastname",
         "mobileNo": mobileNo.text,
-        "alternateMobileNo": "3234234",
-        "scoiety": "shdfk",
         "street": street.text,
-        "landmark": "osdfdf",
         "city": city.text,
-        "aera": aera.text,
-        "pincode": "dfs",
-        "addressType": myType.toString(),
-        "longitude": setLoaction.longitude,
-        "latitude": setLoaction.latitude,
+        "area": area.text,
+        "district": district.text,
+        "addressType": myTypeForType.toString(),
+      }).then((value) async {
+        isloadding = false;
+        notifyListeners();
+        await Fluttertoast.showToast(msg: "Add your deliver address");
+        Navigator.of(context).pop();
+        notifyListeners();
+      });
+      notifyListeners();
+    }
+  }
+
+  void validatorForMap(context, myTypeForMap) async {
+    if (mobileNoFromMap.text.isEmpty) {
+      Fluttertoast.showToast(msg: "Enter your phone number");
+    } else if (streetFromMap.text.isEmpty) {
+      Fluttertoast.showToast(msg: "Someting went wrong. Please set your location again");
+    } else if (cityFromMap.text.isEmpty) {
+      Fluttertoast.showToast(msg: "Someting went wrong. Please set your location again");
+    } else if (areaFromMap.text.isEmpty) {
+      Fluttertoast.showToast(msg: "Someting went wrong. Please set your location again");
+    } else if (districtFromMap.text.isEmpty) {
+      Fluttertoast.showToast(msg: "Someting went wrong. Please set your location again");
+    } else {
+      isloadding = true;
+      notifyListeners();
+      await FirebaseFirestore.instance
+          .collection("AddDeliverAddress")
+          .doc(FirebaseAuth.instance.currentUser.uid)
+          .set({
+        "mobileNo": mobileNoFromMap.text,
+        "street": streetFromMap.text,
+        "city": cityFromMap.text,
+        "area": areaFromMap.text,
+        "district": districtFromMap.text,
+        "addressType": myTypeForMap.toString(),
       }).then((value) async {
         isloadding = false;
         notifyListeners();
@@ -96,16 +103,11 @@ class CheckoutProvider with ChangeNotifier {
         .get();
     if (_db.exists) {
       deliveryAddressModel = DeliveryAddressModel(
-        firstName: _db.get("firstname"),
-        lastName: _db.get("lastname"),
+        district: _db.get("district"),
         addressType: _db.get("addressType"),
-        aera: _db.get("aera"),
-        alternateMobileNo: _db.get("alternateMobileNo"),
+        area: _db.get("area"),
         city: _db.get("city"),
-        landMark: _db.get("landmark"),
         mobileNo: _db.get("mobileNo"),
-        pinCode: _db.get("pincode"),
-        scoirty: _db.get("scoiety"),
         street: _db.get("street"),
       );
       newList.add(deliveryAddressModel);

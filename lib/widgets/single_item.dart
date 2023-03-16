@@ -281,8 +281,14 @@ class _SingleItemState extends State<SingleItem> {
                                             ),
                                             InkWell(
                                               onTap: () {
-                                                if (count < 10) {
-                                                  setState(() {
+                                                if (count >= 20) {
+                                                    Fluttertoast.showToast(
+                                                    msg:
+                                                        "You reach maximum limit",
+                                                  );
+                                                 
+                                                }else{
+                                                   setState(() {
                                                     count++;
                                                   });
                                                   reviewCartProvider

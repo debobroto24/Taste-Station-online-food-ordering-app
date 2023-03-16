@@ -101,7 +101,7 @@ class _ProductOverviewState extends State<ProductOverview> {
 
   @override
   Widget build(BuildContext context) {
-    print("check category in Product overview page: ${widget.category}");
+    // print("check category in Product overview page: ${widget.category}");
     WishListProvider wishListProvider = Provider.of(context);
     getWishtListBool();
     return Scaffold(

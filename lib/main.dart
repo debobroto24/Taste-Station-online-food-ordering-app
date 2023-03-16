@@ -70,7 +70,7 @@ class MyApp extends StatelessWidget {
             // primaryColor: primaryColor,
             primaryColor: Colors.white,
             scaffoldBackgroundColor: scaffoldBackgroundColor),
-        debugShowCheckedModeBanner: false,
+        debugShowCheckedModeBanner: false, 
         home: StreamBuilder(
           stream: FirebaseAuth.instance.authStateChanges(),
           builder: (context, snapShot) {
@@ -79,9 +79,6 @@ class MyApp extends StatelessWidget {
             }
             // return CurrentOrder();
             return SignIn();
-            // return SignUp();
-            // return LoadPayment();
-            // return MyOrder();
           },
         ),
         onGenerateRoute: RouteGenerator.generateRoute,

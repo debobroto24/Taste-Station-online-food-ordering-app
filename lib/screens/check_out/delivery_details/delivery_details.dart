@@ -90,15 +90,16 @@ class _DeliveryDetailsState extends State<DeliveryDetails> {
                     return SingleDeliveryItem(
                       // address:
                       //     "aera, ${e.aera}, street, ${e.street}, society ${e.scoirty}, pincode ${e.pinCode}",
-                      address: "hourse number, ${e.aera}, street, ${e.street},",
+                      address: "${e.district}, ${e.city}, ${e.area}, ${e.street}",
                       // title: "${e.aera}",
                       title: " ",
                       number: e.mobileNo,
-                      addressType: e.addressType == "AddressTypes.Home"
-                          ? "Home"
-                          : e.addressType == "AddressTypes.Other"
-                              ? "Other"
-                              : "Work",
+                      // addressType: e.addressType == "AddressTypes.Home"
+                      //     ? "Home"
+                      //     : e.addressType == "AddressTypes.Other"
+                      //         ? "Other"
+                      //         : "Work",
+                      addressType: "",
                     );
                   }).toList(),
                 )

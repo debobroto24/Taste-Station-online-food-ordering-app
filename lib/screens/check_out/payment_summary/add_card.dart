@@ -13,8 +13,8 @@ import 'package:provider/provider.dart';
 class AddCard extends StatefulWidget {
   String addCard;
   String image;
-  String accountType; 
-  AddCard({this.addCard, this.image,this.accountType});
+  String accountType;
+  AddCard({this.addCard, this.image, this.accountType});
 
   @override
   State<AddCard> createState() => _AddCardState();
@@ -24,7 +24,7 @@ class _AddCardState extends State<AddCard> {
   TextEditingController dateInput = TextEditingController();
   TextEditingController cardnoCon = TextEditingController();
   TextEditingController nameCon = TextEditingController();
-    ProductOrderProvider orderProvider;
+  ProductOrderProvider orderProvider;
 
   Timer _timer;
   @override
@@ -81,23 +81,30 @@ class _AddCardState extends State<AddCard> {
       // });
       // EasyLoading.showSuccess('Payment Successful');
       // Navigator.of(context).pushNamed('/home');
-      orderProvider.addCardNumber(cardnoCon.text, nameCon.text, dateInput.text.toString(), widget.accountType.toString()); 
-       await orderProvider.getAllCard(widget.accountType);
-                  List<CardModel> cardlist = await orderProvider.getCardList;
-      Navigator.of(context).pushNamed('/allcards',   arguments:  AllCardArgument(cardlist: cardlist,accountType: ''),);
+      orderProvider.addCardNumber(cardnoCon.text, nameCon.text,
+          dateInput.text.toString(), widget.accountType.toString());
+          //  orderProvider.addCardNumber(cardnoCon.text, nameCon.text,
+          // dateInput.text.toString(), widget.accountType.toString());
+      await orderProvider.getAllCard(widget.accountType);
+      List<CardModel> cardlist = await orderProvider.getCardList;
+      Navigator.of(context).pushReplacementNamed(
+        '/allcards',
+        arguments: AllCardArgument(cardlist: cardlist, accountType: ''),
+      );
     }
   }
+
   @override
   Widget build(BuildContext context) {
     orderProvider = Provider.of<ProductOrderProvider>(context);
     return Scaffold(
       appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.black26),
-        backgroundColor: scaffoldBackgroundColor,
+        iconTheme: IconThemeData(color: Colors.white),
+        backgroundColor: primaryColor,
         elevation: .7,
         title: Text(
           "Add Card",
-          style: TextStyle(fontSize: 18, color: Colors.black),
+          style: TextStyle(fontSize: 18, color: textColor),
         ),
       ),
       body: Padding(
@@ -276,7 +283,6 @@ class _AddCardState extends State<AddCard> {
       bottomNavigationBar: GestureDetector(
         onTap: () async {
           payment(orderProvider);
-
         },
         child: Container(
           margin: EdgeInsets.only(top: 5, bottom: 25, left: 8, right: 8),
@@ -284,12 +290,12 @@ class _AddCardState extends State<AddCard> {
           height: 40,
           alignment: Alignment.center,
           decoration: BoxDecoration(
-              color: Color.fromARGB(255, 244, 233, 26),
+              color: primaryColor,
               // border: Border.all(),
               borderRadius: BorderRadius.circular(15)),
           child: Text("Add Card",
               style: TextStyle(
-                  color: Colors.black54,
+                  color: textColor,
                   fontSize: 18,
                   fontWeight: FontWeight.bold)),
         ),
